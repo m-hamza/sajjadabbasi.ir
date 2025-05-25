@@ -4,233 +4,550 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سایت شخصی سجاد عباسی</title>
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
         body {
-            font-family: 'Vazir', sans-serif;
-            line-height: 1.6;
+            font-family: 'Vazirmatn', sans-serif; /* استفاده از فونت وزیر متن */
+            line-height: 1.8;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa; /* رنگ پس زمینه کمی روشن تر */
+            color: #333;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* --- هدر --- */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #e6f9ff 100%);
-            padding: 30px;
+            background: linear-gradient(135deg, #6f42c1 0%, #4a148c 100%); /* گرادیانت بنفش */
+            color: #fff;
+            padding: 40px 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            text-align: center;
+            margin-bottom: 40px;
         }
+
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 180px; /* کمی بزرگتر */
+            height: 180px;
             border-radius: 50%;
-            background: url('https://picsum.photos/200/200 ') no-repeat center;
+            background: url('https://picsum.photos/seed/profile/200/200') no-repeat center center;
             background-size: cover;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
+            border: 5px solid #fff; /* حاشیه سفید برای تصویر پروفایل */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .social-icons {
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.8em; /* کمی بزرگتر */
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 0.7em; /* نسبت به h1 کوچکتر */
+            font-weight: 300;
+            color: #e0e0e0; /* رنگ ملایم تر برای عنوان فرعی */
+            display: block;
+            margin-top: 5px;
+        }
+
+        .navigation {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 18px; /* فاصله بیشتر */
+            font-size: 1.1em;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding-bottom: 5px; /* ایجاد فضا برای خط زیرین در هاور */
+            position: relative; /* برای افکت خط زیرین */
+        }
+
+        .navigation a::after { /* افکت خط زیرین در هاور */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 3px;
+            right: 0;
+            background: #ffd700; /* رنگ طلایی برای تاکید */
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+
+        .navigation a:hover {
+            color: #ffd700; /* رنگ طلایی در هاور */
+            /* transform: translateY(-2px); */
+        }
+
+        .navigation a:hover::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+
+
+        .social-icons-header { /* برای آیکون های احتمالی در هدر */
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
         }
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: #fff;
+
+        .social-icons-header .social-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-size: 1.1em;
         }
-        .social-icon:hover {
-            transform: scale(1.1);
+
+        .social-icons-header .social-icon:hover {
+            transform: scale(1.15);
+            background: rgba(255, 255, 255, 0.3);
         }
-        .book-list, .course-list, .content-list {
+
+
+        /* --- بخش های محتوا (کتب، دوره ها، محتوای اختصاصی) --- */
+        .content-section {
             background: #fff;
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 35px; /* پدینگ بیشتر */
+            margin-bottom: 40px; /* فاصله بیشتر بین بخش ها */
+            border-radius: 15px; /* گردی گوشه ها بیشتر */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08); /* سایه ملایم تر */
         }
-        .book-item {
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
+
+        .content-section h2 {
+            font-size: 2em; /* اندازه فونت عنوان بخش */
+            color: #4a148c; /* رنگ بنفش تیره برای عناوین بخش ها */
+            margin-bottom: 30px; /* فاصله بیشتر زیر عنوان بخش */
+            text-align: center; /* عنوان بخش در وسط */
+            border-bottom: 2px solid #e0e0e0; /* خط جداکننده ظریف */
+            padding-bottom: 15px;
         }
-        .book-item::before {
-            content: "📚";
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-            color: #1a73e8;
+
+        .icon-title {
+            margin-left: 10px; /* فاصله آیکون از متن عنوان */
         }
-        .course-item, .content-item {
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
+
+        .grade-section {
+            margin-bottom: 35px;
         }
-        .course-item::before {
-            content: "🎯";
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-            color: #1a73e8;
+
+        .grade-section h3 {
+            font-size: 1.6em;
+            color: #6f42c1; /* رنگ بنفش روشن تر برای عنوان پایه */
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
         }
-        .content-item::before {
-            content: "🌟";
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-            color: #1a73e8;
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap; /* اجازه به کارت ها برای رفتن به خط بعدی در صورت کمبود جا */
+            gap: 25px; /* فاصله بین کارت ها */
+            justify-content: center; /* کارت ها در مرکز چیده شوند اگر یک خط کامل را پر نکنند */
         }
-        .contact {
-            background: #fff;
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+        .card {
+            background: #fdfdfd;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden; /* برای اینکه تصویر از گوشه های گرد کارت بیرون نزند */
+            width: calc(33.333% - 20px); /* برای نمایش سه کارت در هر ردیف با کمی فاصله */
+            /* در صورتی که دو کارت میخواهید: calc(50% - 15px) */
+            /* در صورتی که یک کارت میخواهید (برای موبایل): 100% یا عرض ثابت */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column; /* محتوای کارت زیر هم قرار گیرد */
         }
-        .contact-info {
+
+        .card:hover {
+            transform: translateY(-8px); /* افکت شناور شدن کارت */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px; /* ارتفاع ثابت برای تصاویر کارت */
+            object-fit: cover; /* تصویر به طور کامل کادر را پر کند بدون تغییر نسبت */
+        }
+
+        .card-content {
+            padding: 20px;
+            flex-grow: 1; /* محتوای کارت فضای باقی مانده را پر کند */
+        }
+
+        .card-content h4 {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- فوتر --- */
+        .footer {
+            background: #343a40; /* رنگ پس زمینه تیره برای فوتر */
+            color: #f8f9fa; /* رنگ متن روشن */
+            padding: 50px 0 20px; /* پدینگ بالا و پایین */
+            text-align: center;
+        }
+
+        .footer .container { /* برای اینکه محتوای فوتر هم در همان عرض محتوای اصلی باشد */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; /* پدینگ داخلی فوتر */
+        }
+
+
+        .footer h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .contact-info-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 20px 30px; /* فاصله عمودی و افقی بین آیتم های تماس */
+            margin-bottom: 30px;
         }
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: #1a73e8;
-            color: white;
-            border-radius: 50%;
+
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-right: 15px;
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+
+        .contact-item a {
+            color: #adb5bd; /* رنگ لینک های فوتر */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #fff; /* روشن تر شدن لینک در هاور */
+        }
+
+        .contact-icon {
+            font-size: 1.5em; /* اندازه آیکون */
+            margin-left: 12px; /* فاصله آیکون از متن */
+            width: 45px; /* برای هم اندازه شدن با آیکون های دیگر */
+            height: 45px;
+            line-height: 45px; /* برای وسط چین عمودی آیکون در صورت نیاز */
+            text-align: center;
+            border-radius: 50%; /* گرد کردن آیکون ها */
+            background-color: rgba(255, 255, 255, 0.1); /* پس زمینه نیمه شفاف برای آیکون ها */
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item a:hover .contact-icon {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+
+        .address {
+            margin-bottom: 25px;
+            font-size: 1em;
+            color: #adb5bd;
+        }
+
+        .address .contact-icon {
+            margin-left: 8px;
+            font-size: 1.2em; /* آیکون آدرس کمی کوچکتر */
+            background-color: transparent; /* بدون پس زمینه برای آیکون آدرس */
+        }
+
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #495057; /* جداکننده بخش کپی رایت */
+            font-size: 0.9em;
+            color: #6c757d; /* رنگ متن کپی رایت */
+        }
+
+
+        /* --- رسپانسیو سازی --- */
+        @media (max-width: 992px) { /* تبلت ها */
+            .card {
+                width: calc(50% - 15px); /* دو کارت در هر ردیف */
             }
-            .profile-image {
-                width: 150px;
-                height: 150px;
+            .header h1 {
+                font-size: 2.4em;
             }
-            .social-icons {
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-            .book-item::before, .course-item::before, .content-item::before {
+            .navigation a {
+                margin: 0 12px;
                 font-size: 1em;
             }
         }
+
+        @media (max-width: 768px) { /* موبایل های بزرگ */
+            .container {
+                padding: 15px;
+            }
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .navigation {
+                /* نمایش منو به صورت ستونی یا دکمه همبرگری در این مرحله پیاده سازی نشده */
+                /* برای سادگی، لینک ها زیر هم با کمی فاصله قرار میگیرند */
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .navigation a {
+                margin: 5px 0;
+            }
+
+            .content-section h2 {
+                font-size: 1.8em;
+            }
+            .grade-section h3 {
+                font-size: 1.4em;
+            }
+            .card {
+                width: calc(100% - 10px); /* یک کارت در هر ردیف برای موبایل */
+                margin-left: auto; /* برای وسط چین شدن در صورت نیاز */
+                margin-right: auto;
+            }
+            .card img {
+                height: 160px;
+            }
+            .card-content h4 {
+                font-size: 1.15em;
+            }
+            .contact-info-container {
+                flex-direction: column; /* آیتم های تماس زیر هم در موبایل */
+                align-items: center; /* وسط چین کردن آیتم ها */
+                gap: 15px;
+            }
+            .contact-item {
+                width: auto; /* عرض خودکار برای آیتم ها */
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) { /* موبایل های کوچک */
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .header {
+                padding: 30px 20px;
+            }
+            .content-section {
+                padding: 25px;
+            }
+            .card img {
+                height: 140px;
+            }
+        }
     </style>
-</head>
+    </head>
 <body>
     <div class="container">
-        <!-- هدر -->
-        <div class="header">
+        <header class="header">
             <div class="profile-image"></div>
-            <h1>سجاد عباسی<br><span style="font-size: 0.8em; color: #666;">دبیر عربی</span></h1>
-            <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
+            <h1>سجاد عباسی<br><span class="subtitle">دبیر عربی</span></h1>
+            <nav class="navigation">
+                <a href="#books">لیست کتب</a>
+                <a href="#courses">دوره‌های آموزشی</a>
+                <a href="#exclusive-content">محتوای اختصاصی</a>
+                <a href="#contact-footer">تماس با من</a>
+            </nav>
+            <div class="social-icons-header">
+                </div>
+        </header>
 
-        <!-- لیست کتب -->
-        <div class="book-list">
-            <h2>📚 لیست کتب</h2>
+        <section id="books" class="content-section">
+            <h2><i class="fas fa-book icon-title"></i> لیست کتب</h2>
             <div class="grade-section">
                 <h3>پایه هفتم</h3>
-                <div class="book-item">کتاب عربی پایه هفتم - حسنی</div>
-                <div class="book-item">مقدمات نحو عربی -مصطفی</div>
-                <div class="book-item">داستان‌های کوتاه عربی - سعیدی</div>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/book1/300/200" alt="تصویر کتاب">
+                        <div class="card-content">
+                            <h4>کتاب عربی پایه هفتم - حسنی</h4>
+                            <p>توضیحات مختصری درباره کتاب.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/book2/300/200" alt="تصویر کتاب">
+                        <div class="card-content">
+                            <h4>مقدمات نحو عربی -مصطفی</h4>
+                            <p>توضیحات مختصری درباره کتاب.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/book3/300/200" alt="تصویر کتاب">
+                        <div class="card-content">
+                            <h4>داستان‌های کوتاه عربی - سعیدی</h4>
+                            <p>توضیحات مختصری درباره کتاب.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="grade-section">
                 <h3>پایه هشتم</h3>
-                <div class="book-item">کتاب عربی پایه هشتم - حسنی</div>
-                <div class="book-item">نحو و صرف عربی -مصطفی</div>
-                <div class="book-item">شعر و نثر عربی - سعیدی</div>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/book4/300/200" alt="تصویر کتاب">
+                        <div class="card-content">
+                            <h4>کتاب عربی پایه هشتم - حسنی</h4>
+                            <p>توضیحات مختصری درباره کتاب.</p>
+                        </div>
+                    </div>
+                    </div>
             </div>
             <div class="grade-section">
                 <h3>پایه نهم</h3>
-                <div class="book-item">کتاب عربی پایه نهم - حسنی</div>
-                <div class="book-item">اصول نحو عربی -مصطفی</div>
-                <div class="book-item">ادبیات عربی - سعیدی</div>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/book5/300/200" alt="تصویر کتاب">
+                        <div class="card-content">
+                            <h4>کتاب عربی پایه نهم - حسنی</h4>
+                            <p>توضیحات مختصری درباره کتاب.</p>
+                        </div>
+                    </div>
+                    </div>
             </div>
-        </div>
+        </section>
 
-        <!-- دوره‌های آموزشی -->
-        <div class="course-list">
-            <h2>🎯 دوره‌های آموزشی</h2>
+        <section id="courses" class="content-section">
+            <h2><i class="fas fa-chalkboard-teacher icon-title"></i> دوره‌های آموزشی</h2>
             <div class="grade-section">
                 <h3>پایه هفتم</h3>
-                <div class="course-item">آموزش نکات کلیدی نحو</div>
-                <div class="course-item">تمرینات تعبیر</div>
-                <div class="course-item">آموزش خواندن جمله</div>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/course1/300/200" alt="تصویر دوره">
+                        <div class="card-content">
+                            <h4>آموزش نکات کلیدی نحو</h4>
+                            <p>توضیحات مختصری درباره دوره.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/course2/300/200" alt="تصویر دوره">
+                        <div class="card-content">
+                            <h4>تمرینات تعبیر</h4>
+                            <p>توضیحات مختصری درباره دوره.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="grade-section">
-                <h3>پایه هشتم</h3>
-                <div class="course-item">آموزش صرف فعل</div>
-                <div class="course-item">تمرینات تفسیر</div>
-                <div class="course-item">آموزش نصوص ادبی</div>
-            </div>
-            <div class="grade-section">
-                <h3>پایه نهم</h3>
-                <div class="course-item">آموزش قواعد معقد نحو</div>
-                <div class="course-item">تمرینات مقاله نویسی</div>
-                <div class="course-item">آموزش نصوص تاریخی</div>
-            </div>
-        </div>
+            </section>
 
-        <!-- محتواهای اختصاصی -->
-        <div class="content-list">
-            <h2>🌟 محتواهای اختصاصی</h2>
+        <section id="exclusive-content" class="content-section">
+            <h2><i class="fas fa-star icon-title"></i> محتواهای اختصاصی</h2>
             <div class="grade-section">
                 <h3>پایه هفتم</h3>
-                <div class="content-item">فرامینت‌های کلیدی درسی</div>
-                <div class="content-item">تمرینات اضافی نحو</div>
-                <div class="content-item">ماهیاء نصوص انتخابی</div>
-            </div>
-            <div class="grade-section">
-                <h3>پایه هشتم</h3>
-                <div class="content-item">حل تمرینات کتاب درسی</div>
-                <div class="content-item">آموزش تدوین جمله</div>
-                <div class="content-item">تحلیل نصوص ادبی</div>
-            </div>
-            <div class="grade-section">
-                <h3>پایه نهم</h3>
-                <div class="content-item">آموزش نکات امتحانی</div>
-                <div class="content-item">تمرینات مقاله نویسی</div>
-                <div class="content-item">تحلیل نصوص تاریخی</div>
-            </div>
-        </div>
-
-        <!-- راه ارتباطی -->
-        <div class="contact">
-            <h2>📞 راه ارتباطی</h2>
-            <div class="contact-info">
-                <div>
-                    <div class="contact-icon"><i class="far fa-envelope"></i></div>
-                    <span>sajjad.abasi@example.com</span>
-                </div>
-                <div>
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <span>0912 345 6789</span>
-                </div>
-                <div>
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <span>تهران، خیابان ولیعصر، بلوار ۱۲</span>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/exclusive1/300/200" alt="تصویر محتوا">
+                        <div class="card-content">
+                            <h4>فرامینت‌های کلیدی درسی</h4>
+                            <p>توضیحات مختصری درباره محتوا.</p>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <img src="https://picsum.photos/seed/exclusive2/300/200" alt="تصویر محتوا">
+                        <div class="card-content">
+                            <h4>تمرینات اضافی نحو</h4>
+                            <p>توضیحات مختصری درباره محتوا.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            </section>
     </div>
+
+    <footer id="contact-footer" class="footer">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt icon-title"></i> راه‌های ارتباطی</h2>
+            <div class="contact-info-container">
+                <div class="contact-item">
+                    <a href="mailto:info@sajjadabbasi.ir">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@sajjadabbasi.ir</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fas fa-link contact-icon"></i>
+                        <span>صفحه تماس با ما</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-rocketchat contact-icon"></i> <span>شاد: @sajjadabbasi</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-telegram-plane contact-icon"></i> <span>ایتا</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                     <a href="#"> <i class="far fa-comment-dots contact-icon"></i> <span>بله</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-telegram-plane contact-icon"></i>
+                        <span>تلگرام</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-instagram contact-icon"></i>
+                        <span>اینستاگرام</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:YOUR_PHONE_NUMBER"> <i class="fas fa-phone contact-icon"></i>
+                        <span>شماره تماس (اینجا قرار دهید)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="address">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>آذربایجان شرقی، شهرستان چاراویماق</span>
+            </div>
+            <div class="copyright">
+                <p>&copy; ۱۴۰۳ تمامی حقوق برای سجاد عباسی محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
