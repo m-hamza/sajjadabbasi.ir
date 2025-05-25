@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آموزش ماتریسی عربی | سجاد عباسی</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+        }
+
+        .matrix-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 15px;
+        }
+
+        .matrix-cell {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-height: 300px;
+            text-align: center;
+        }
+
+        .cell-1 { /* 0 */
+            border-color: #95a5a6;
+        }
+
+        .cell-2 { /* -1 */
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .cell-3 { /* 1 */
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .cell-4 { /* 0 */
+            border-color: #95a5a6;
+        }
+
+        .grade-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .course-item {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .matrix-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .matrix-cell {
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ماتریس اصلی -->
+    <div class="matrix-container">
+        <!-- ردیف اول -->
+        <div class="matrix-cell cell-1">
+            <h2 class="grade-title">عربی هفتم</h2>
+            <ul class="course-list">
+                <li class="course-item">آموزش مو به مو</li>
+                <li class="course-item">قواعد اختصاصی</li>
+                <li class="course-item">نکات شب امتحانی</li>
+            </ul>
+        </div>
+
+        <div class="matrix-cell cell-2">
+            <h2 class="grade-title">آزمون‌های هفتم</h2>
+            <div class="exam-grid">
+                <div class="exam-item">درس ۱</div>
+                <div class="exam-item">درس ۲</div>
+                <!-- ادامه تا درس ۱۰ -->
+            </div>
+        </div>
+
+        <!-- ردیف دوم -->
+        <div class="matrix-cell cell-3">
+            <h2 class="grade-title">عربی هشتم</h2>
+            <ul class="course-list">
+                <li class="course-item">ترجمه پیشرفته</li>
+                <li class="course-item">تمرینات تعاملی</li>
+                <li class="course-item">پاسخنامه تشریحی</li>
+            </ul>
+        </div>
+
+        <div class="matrix-cell cell-4">
+            <h2 class="grade-title">آزمون‌های هشتم</h2>
+            <div class="exam-grid">
+                <div class="exam-item">درس ۱</div>
+                <div class="exam-item">درس ۲</div>
+                <!-- ادامه تا درس ۱۰ -->
+            </div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer>
+        <div class="footer-content">
+            <p>تماس با ما: example@domain.com | تلفن: ۰۹۱۲XXX XXX</p>
+            <p>© ۱۴۰۳ سیستم آموزش ماتریسی - تمام حقوق محفوظ است</p>
+        </div>
+    </footer>
+</body>
+</html>
