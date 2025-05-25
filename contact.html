@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما - سایت شخصی سجاد عباسی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css"> <style>
+        /* استایل های اضافی مخصوص فرم تماس در صورت نیاز */
+        .contact-form-container {
+            max-width: 700px; /* محدود کردن عرض فرم برای خوانایی بهتر */
+            margin: 30px auto; /* وسط چین کردن فرم */
+            padding: 30px;
+            background-color: #fdfdfd;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-form-container h3 {
+            text-align: center;
+            color: #4a148c;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box; /* برای اینکه padding عرض کلی را تحت تاثیر قرار ندهد */
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical; /* اجازه تغییر اندازه عمودی */
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6f42c1; /* رنگ بنفش هدر */
+            box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+        }
+
+        .submit-btn {
+            background-color: #6f42c1; /* رنگ بنفش هدر */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: 100%; /* دکمه تمام عرض */
+        }
+
+        .submit-btn:hover {
+            background-color: #4a148c; /* رنگ بنفش تیره‌تر */
+        }
+
+        .contact-details-prominent {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e9ecef; /* پس زمینه کمی متفاوت برای اطلاعات تماس */
+            border-radius: 8px;
+        }
+        .contact-details-prominent p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+        .contact-details-prominent i {
+            margin-left: 8px;
+            color: #6f42c1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>سجاد عباسی<br><span class="subtitle">دبیر عربی</span></h1>
+            <nav class="navigation">
+                <a href="index.html">صفحه اصلی</a> <a href="index.html#books">لیست کتب</a>
+                <a href="index.html#courses">دوره‌های آموزشی</a>
+                <a href="index.html#exclusive-content">محتوای اختصاصی</a>
+                </nav>
+        </header>
+
+        <section id="contact-page-content" class="content-section">
+            <h2><i class="fas fa-envelope-open-text icon-title"></i> تماس با ما</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
+                خوشحال می‌شویم از طریق فرم زیر یا سایر راه‌های ارتباطی با ما در تماس باشید.
+            </p>
+
+            <div class="contact-form-container" id="contact-form-section">
+                <h3><i class="fas fa-paper-plane"></i> ارسال پیام</h3>
+                <form action="#" method="POST"> <div class="form-group">
+                        <label for="name">نام و نام خانوادگی:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">ایمیل:</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">موضوع:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">پیام شما:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">ارسال پیام</button>
+                </form>
+            </div>
+
+            <div class="contact-details-prominent">
+                <h3><i class="fas fa-address-book"></i> سایر راه‌های ارتباطی</h3>
+                <p><i class="fas fa-envelope"></i>ایمیل: info@sajjadabbasi.ir</p>
+                <p><i class="fas fa-phone"></i>شماره تماس: (شماره تماس خود را اینجا وارد کنید)</p>
+                <p><i class="fas fa-map-marker-alt"></i>آدرس: آذربایجان شرقی، شهرستان چاراویماق</p>
+                <p>
+                    <i class="fab fa-rocketchat"></i> شاد: @sajjadabbasi |
+                    <i class="fab fa-telegram-plane"></i> ایتا |
+                    <i class="far fa-comment-dots"></i> بله |
+                    <i class="fab fa-telegram-plane"></i> تلگرام |
+                    <i class="fab fa-instagram"></i> اینستاگرام
+                </p>
+            </div>
+
+        </section>
+    </div>
+
+    <footer id="contact-footer" class="footer">
+        <div class="container">
+            <h2><i class="fas fa-phone-alt icon-title"></i> راه‌های ارتباطی</h2>
+            <div class="contact-info-container">
+                <div class="contact-item">
+                    <a href="mailto:info@sajjadabbasi.ir">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@sajjadabbasi.ir</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="contact.html"> <i class="fas fa-link contact-icon"></i>
+                        <span>صفحه تماس با ما</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-rocketchat contact-icon"></i>
+                        <span>شاد: @sajjadabbasi</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-telegram-plane contact-icon"></i>
+                        <span>ایتا</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                     <a href="#"> <i class="far fa-comment-dots contact-icon"></i>
+                        <span>بله</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-telegram-plane contact-icon"></i>
+                        <span>تلگرام</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="#"> <i class="fab fa-instagram contact-icon"></i>
+                        <span>اینستاگرام</span>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="tel:YOUR_PHONE_NUMBER"> <i class="fas fa-phone contact-icon"></i>
+                        <span>شماره تماس (اینجا قرار دهید)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="address">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>آذربایجان شرقی، شهرستان چاراویماق</span>
+            </div>
+            <div class="copyright">
+                <p>&copy; ۱۴۰۳ تمامی حقوق برای سجاد عباسی محفوظ است. <a href="index.html" style="color: #adb5bd; text-decoration: none;">بازگشت به صفحه اصلی</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
