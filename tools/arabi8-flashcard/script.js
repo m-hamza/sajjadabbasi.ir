@@ -1,9 +1,10 @@
-/* داده‌های لغات عربی پایه هشتم - استخراج شده از فایل‌های ارسالی
-*/
+/* * دیتابیس کامل لغات عربی پایه هشتم (درس ۱ تا ۱۰)
+ * استخراج شده از فایل‌های کتاب درسی
+ */
 const vocabData = [
     {
         lessonId: 1,
-        title: "درس اول",
+        title: "درس اول: مراجعة",
         words: [
             { ar: "بَسيط", fa: "ساده" }, { ar: "طَبّاخ", fa: "آشپز" }, { ar: "الثّامِن", fa: "هشتم" },
             { ar: "حافِلَة", fa: "اتوبوس" }, { ar: "طَبَخْتُ", fa: "پختم" }, { ar: "حَلْوانِيّ", fa: "شیرینی فروش" },
@@ -15,7 +16,7 @@ const vocabData = [
     },
     {
         lessonId: 2,
-        title: "درس دوم",
+        title: "درس دوم: اهمیت زبان عربی",
         words: [
             { ar: "فارِغ", fa: "خالی" }, { ar: "أَسْعار", fa: "قیمت‌ها (مفرد: سِعْر)" }, { ar: "قَدَرَ", fa: "توانست" },
             { ar: "إيجار", fa: "کرایه، اجاره" }, { ar: "كَأَنَّ", fa: "گویا، انگار" }, { ar: "بِطاقَةُ الْهُويَّةِ", fa: "کارت شناسایی" },
@@ -32,7 +33,7 @@ const vocabData = [
     },
     {
         lessonId: 3,
-        title: "درس سوم",
+        title: "درس سوم: شغل آینده",
         words: [
             { ar: "آخَرين", fa: "دیگران" }, { ar: "صارَ", fa: "شد" }, { ar: "أَحَبَّ", fa: "دوست داشت" },
             { ar: "طِبُّ الْعُيون", fa: "چشم پزشکی" }, { ar: "عَمّ", fa: "عمو" }, { ar: "أُريدُ أَنْ أَذْهَبَ", fa: "می‌خواهم که بروم" },
@@ -47,7 +48,7 @@ const vocabData = [
     },
     {
         lessonId: 4,
-        title: "درس چهارم",
+        title: "درس چهارم: تجربه جدید",
         words: [
             { ar: "غَرِقَ", fa: "غرق شد" }, { ar: "يَغْرَقُ", fa: "غرق می‌شود" }, { ar: "نَفْس", fa: "خود" },
             { ar: "طَيِّب", fa: "خوب، پاک" }, { ar: "اِبْن آدَم", fa: "آدمیزاد" }, { ar: "غَضَب", fa: "خشم" },
@@ -65,7 +66,7 @@ const vocabData = [
     },
     {
         lessonId: 5,
-        title: "درس پنجم",
+        title: "درس پنجم: دوستی",
         words: [
             { ar: "بِالتَّأكيد", fa: "البته" }, { ar: "جِئْتُم", fa: "آمدید" }, { ar: "أَبْصار", fa: "دیدگان (مفرد: بَصَر)" },
             { ar: "جَوْلَة", fa: "گردش" }, { ar: "حَبيب", fa: "دوست" }, { ar: "أَحْرار", fa: "آزادگان (مفرد: حُرّ)" },
@@ -81,7 +82,7 @@ const vocabData = [
     },
     {
         lessonId: 6,
-        title: "درس ششم",
+        title: "درس ششم: در سفر",
         words: [
             { ar: "قافِلَة", fa: "کاروان" }, { ar: "كُرَةُ الْمِنْضَدَةِ", fa: "تنیس روی میز" }, { ar: "أَرْبَعاً وَ ثَلاثين", fa: "سی و چهار" },
             { ar: "أَرْبَعون", fa: "چهل" }, { ar: "لِـ", fa: "دارد، برای" }, { ar: "أَمَرَ", fa: "دستور داد" },
@@ -96,7 +97,7 @@ const vocabData = [
     },
     {
         lessonId: 7,
-        title: "درس هفتم",
+        title: "درس هفتم: زمین خدا وسیع است",
         words: [
             { ar: "ضَحِكَ", fa: "خندید" }, { ar: "يَضْحَكُ", fa: "می‌خندد" }, { ar: "طائِر", fa: "پرنده" },
             { ar: "عِنْدَما", fa: "وقتی که" }, { ar: "غابَة", fa: "جنگل" }, { ar: "غِزْلان", fa: "آهوها" },
@@ -112,7 +113,7 @@ const vocabData = [
     },
     {
         lessonId: 8,
-        title: "درس هشتم",
+        title: "درس هشتم: اعتماد به نفس",
         words: [
             { ar: "أَقْرِباء", fa: "خویشاوندان" }, { ar: "عُشّ", fa: "لانه" }, { ar: "تَسْأَلُ فِراخَها", fa: "از جوجه‌هایش می‌پرسد" },
             { ar: "قَمْح", fa: "گندم" }, { ar: "حَدَثَ", fa: "اتفاق افتاد" }, { ar: "يَحْدُثُ", fa: "اتفاق می‌افتد" },
@@ -124,7 +125,7 @@ const vocabData = [
     },
     {
         lessonId: 9,
-        title: "درس نهم",
+        title: "درس نهم: سفر علمی",
         words: [
             { ar: "عَشاء", fa: "شام" }, { ar: "غَداء", fa: "ناهار" }, { ar: "أَزْهار", fa: "شکوفه‌ها، گل‌ها" },
             { ar: "غَفَرَ", fa: "آمرزید" }, { ar: "يَغْفِرُ", fa: "می‌آمرزد" }, { ar: "أَسْنان", fa: "دندان‌ها" },
@@ -138,7 +139,7 @@ const vocabData = [
     },
     {
         lessonId: 10,
-        title: "درس دهم",
+        title: "درس دهم: مراقد دینی",
         words: [
             { ar: "التّاسِع", fa: "نهم" }, { ar: "الْحاديَ عَشَرَ", fa: "یازدهم" }, { ar: "تَمْر", fa: "خرما" },
             { ar: "الثّانيَ عَشَرَ", fa: "دوازدهم" }, { ar: "الْعاشِر", fa: "دهم" }
@@ -146,57 +147,65 @@ const vocabData = [
     }
 ];
 
-/* مدیریت داده‌ها و لاجیک
-*/
+/* --- منطق برنامه و سیستم لایتنر --- */
+
+// تنظیمات
+const DB_KEY = 'arabicFlashcards_vFinal';
+// فواصل زمانی جعبه لایتنر به روز: خانه 1 (1 روز)، خانه 2 (2 روز)، ...
+const LEITNER_INTERVALS = [1, 2, 4, 8, 15]; 
 
 let currentUser = null;
-let currentLessonWords = [];
+let currentSessionWords = [];
 let currentCardIndex = 0;
 
-// کلید ذخیره سازی در LocalStorage
-const DB_KEY = 'arabicFlashcardApp_Data';
-
-// شروع برنامه
 document.addEventListener('DOMContentLoaded', () => {
     checkLogin();
 });
 
-// بررسی وضعیت ورود
+// --- مدیریت کاربران ---
+
 function checkLogin() {
-    const storedData = JSON.parse(localStorage.getItem(DB_KEY));
-    if (storedData && storedData.currentUser) {
-        currentUser = storedData.users[storedData.currentUser];
-        showDashboard();
-    } else {
-        document.getElementById('login-section').classList.remove('hidden');
-        document.getElementById('dashboard-section').classList.add('hidden');
-        document.getElementById('study-section').classList.add('hidden');
+    const storedData = localStorage.getItem(DB_KEY);
+    if (storedData) {
+        const data = JSON.parse(storedData);
+        if (data.currentUser) {
+            currentUser = data.users[data.currentUser];
+            showDashboard();
+            return;
+        }
     }
+    // اگر لاگین نبود
+    document.getElementById('login-section').classList.remove('hidden');
+    document.getElementById('dashboard-section').classList.add('hidden');
+    document.getElementById('study-section').classList.add('hidden');
 }
 
-// ورود کاربر
 function login() {
     const usernameInput = document.getElementById('username').value.trim();
     const passwordInput = document.getElementById('password').value.trim();
 
-    if (!usernameInput) {
-        alert("لطفا نام کاربری را وارد کنید");
+    if (!usernameInput || !passwordInput) {
+        alert("لطفا نام کاربری و رمز عبور را وارد کنید");
         return;
     }
 
     let storedData = JSON.parse(localStorage.getItem(DB_KEY)) || { users: {}, currentUser: null };
 
-    // اگر کاربر جدید است، ایجاد شود
-    if (!storedData.users[usernameInput]) {
-        storedData.users[usernameInput] = {
-            username: usernameInput,
-            password: passwordInput, // در یک پروژه واقعی باید هش شود
-            progress: {} // ساختار: { "word_ar": box_level (1-5) }
-        };
-    } else {
-        // بررسی رمز (ساده)
+    if (storedData.users[usernameInput]) {
+        // ورود کاربر قدیمی
         if (storedData.users[usernameInput].password !== passwordInput) {
             alert("رمز عبور اشتباه است");
+            return;
+        }
+    } else {
+        // ثبت نام کاربر جدید
+        if(confirm("کاربری با این نام وجود ندارد. آیا می‌خواهید حساب جدید بسازید؟")) {
+            storedData.users[usernameInput] = {
+                username: usernameInput,
+                password: passwordInput,
+                progress: {} // ساختار: { "word_ar": { box: 1, nextReview: timestamp } }
+            };
+        } else {
             return;
         }
     }
@@ -208,7 +217,6 @@ function login() {
     checkLogin();
 }
 
-// خروج
 function logout() {
     let storedData = JSON.parse(localStorage.getItem(DB_KEY));
     if (storedData) {
@@ -218,7 +226,8 @@ function logout() {
     location.reload();
 }
 
-// نمایش داشبورد و آمار
+// --- منطق لایتنر و داشبورد ---
+
 function showDashboard() {
     document.getElementById('login-section').classList.add('hidden');
     document.getElementById('study-section').classList.add('hidden');
@@ -228,263 +237,57 @@ function showDashboard() {
 
     // محاسبه آمار
     let totalWords = 0;
-    let mastered = 0;
-    let learning = 0;
-
-    vocabData.forEach(lesson => {
-        lesson.words.forEach(word => {
-            totalWords++;
-            const level = currentUser.progress[word.ar] || 0;
-            if (level >= 5) mastered++;
-            else if (level > 0) learning++;
-        });
-    });
-
-    document.getElementById('total-words').textContent = totalWords;
-    document.getElementById('mastered-words').textContent = mastered;
-    document.getElementById('learning-words').textContent = learning;
-
-    // ساخت لیست درس‌ها
-    const grid = document.getElementById('lessons-grid');
-    grid.innerHTML = '';
-    vocabData.forEach(lesson => {
-        const div = document.createElement('div');
-        div.className = 'lesson-card';
-        div.innerHTML = `
-            <h4>${lesson.title}</h4>
-            <span>${lesson.words.length} لغت</span>
-        `;
-        div.onclick = () => startLesson(lesson.lessonId);
-        grid.appendChild(div);
-    });
-}
-
-// شروع درس (سیستم لایتنر ساده شده)
-function startLesson(lessonId) {
-    const lesson = vocabData.find(l => l.lessonId === lessonId);
-    // فیلتر کردن کلماتی که هنوز کامل حفظ نشده‌اند (جعبه ۵)
-    currentLessonWords = lesson.words.filter(w => {
-        const level = currentUser.progress[w.ar] || 0;
-        return level < 5;
-    });
-
-    // شافل کردن کلمات
-    currentLessonWords.sort(() => Math.random() - 0.5);
-
-    if (currentLessonWords.length === 0) {
-        alert("تبریک! تمام لغات این درس را حفظ کرده‌اید.");
-        return;
-    }
-
-    currentCardIndex = 0;
-    document.getElementById('dashboard-section').classList.add('hidden');
-    document.getElementById('study-section').classList.remove('hidden');
-    document.getElementById('lesson-title').textContent = lesson.title;
-    
-    loadCard();
-}
-
-// نمایش کارت
-function loadCard() {
-    const word = currentLessonWords[currentCardIndex];
-    document.getElementById('progress-counter').textContent = `${currentCardIndex + 1}/${currentLessonWords.length}`;
-    
-    const front = document.getElementById('card-front');
-    const back = document.getElementById('card-back');
-    const flashcard = document.querySelector('.flashcard');
-    const messageBox = document.getElementById('message-box');
-
-    flashcard.classList.remove('flipped');
-    messageBox.classList.add('hidden');
-
-    front.textContent = word.ar;
-    back.textContent = word.fa;
-}
-
-// چرخاندن کارت
-function flipCard() {
-    document.querySelector('.flashcard').classList.toggle('flipped');
-}
-
-// مدیریت پاسخ (بلد بودم / نبودم)
-function handleAnswer(known) {
-    const word = currentLessonWords[currentCardIndex];
-    let level = currentUser.progress[word.ar] || 0;
-    const messageBox = document.getElementById('message-box');
-
-    if (known) {
-        level++;
-        messageBox.textContent = "آفرین! به مرحله بعد رفت.";
-        messageBox.style.background = "#d1fae5";
-        messageBox.style.color = "#065f46";
-    } else {
-        level = 1; // برگشت به خانه اول
-        messageBox.textContent = "اشکال نداره، دوباره مرور میشه.";
-        messageBox.style.background = "#fee2e2";
-        messageBox.style.color = "#991b1b";
-    }
-    messageBox.classList.remove('hidden');
-
-    // ذخیره در حافظه
-    currentUser.progress[word.ar] = level;
-    saveUserData();
-
-    // رفتن به کارت بعد با کمی تاخیر
-    setTimeout(() => {
-        currentCardIndex++;
-        if (currentCardIndex < currentLessonWords.length) {
-            loadCard();
-        } else {
-            alert("پایان مرور این درس!");
-            showDashboard();
-        }
-    }, 1000);
-}
-
-// ذخیره داده کاربر در LocalStorage
-function saveUserData() {
-    let storedData = JSON.parse(localStorage.getItem(DB_KEY));
-    storedData.users[currentUser.username] = currentUser;
-    localStorage.setItem(DB_KEY, JSON.stringify(storedData));
-}
-
-// دانلود فایل JSON کل داده‌ها
-function exportData() {
-    const storedData = localStorage.getItem(DB_KEY);
-    const blob = new Blob([storedData], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "arabic_flashcards_backup.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-}
-
-
-
-/* سیستم لایتنر و مدیریت داده‌ها */
-let currentUser = null;
-let currentSessionWords = [];
-let currentCardIndex = 0;
-
-// فواصل زمانی جعبه لایتنر (به روز)
-// خانه 1: 1 روز، خانه 2: 2 روز، خانه 3: 4 روز، خانه 4: 8 روز، خانه 5: 15 روز
-const LEITNER_INTERVALS = [1, 2, 4, 8, 15];
-const DB_KEY = 'arabicLeitnerApp_v2';
-
-document.addEventListener('DOMContentLoaded', () => {
-    checkLogin();
-});
-
-function checkLogin() {
-    const storedData = JSON.parse(localStorage.getItem(DB_KEY));
-    if (storedData && storedData.currentUser) {
-        currentUser = storedData.users[storedData.currentUser];
-        showDashboard();
-    } else {
-        document.getElementById('login-section').classList.remove('hidden');
-        document.getElementById('dashboard-section').classList.add('hidden');
-        document.getElementById('study-section').classList.add('hidden');
-    }
-}
-
-function login() {
-    const usernameInput = document.getElementById('username').value.trim();
-    const passwordInput = document.getElementById('password').value.trim();
-
-    if (!usernameInput) {
-        alert("لطفا نام کاربری را وارد کنید");
-        return;
-    }
-
-    let storedData = JSON.parse(localStorage.getItem(DB_KEY)) || { users: {}, currentUser: null };
-
-    if (!storedData.users[usernameInput]) {
-        storedData.users[usernameInput] = {
-            username: usernameInput,
-            password: passwordInput,
-            // ساختار دیتای لایتنر: { "word_ar": { box: 1, nextReview: timestamp } }
-            progress: {} 
-        };
-    } else {
-        if (storedData.users[usernameInput].password !== passwordInput) {
-            alert("رمز عبور اشتباه است");
-            return;
-        }
-    }
-
-    storedData.currentUser = usernameInput;
-    localStorage.setItem(DB_KEY, JSON.stringify(storedData));
-    currentUser = storedData.users[usernameInput];
-    
-    checkLogin();
-}
-
-function logout() {
-    let storedData = JSON.parse(localStorage.getItem(DB_KEY));
-    if (storedData) {
-        storedData.currentUser = null;
-        localStorage.setItem(DB_KEY, JSON.stringify(storedData));
-    }
-    location.reload();
-}
-
-// تابعی برای بررسی اینکه آیا موعد مرور لغت رسیده است یا خیر
-function isDue(wordData) {
-    if (!wordData) return true; // اگر دیتایی نیست (لغت جدید)، یعنی باید خوانده شود
-    if (wordData.box >= 6) return false; // اگر خانه 6 است یعنی حفظ شده
-    const now = Date.now();
-    return now >= wordData.nextReview;
-}
-
-function showDashboard() {
-    document.getElementById('login-section').classList.add('hidden');
-    document.getElementById('study-section').classList.add('hidden');
-    document.getElementById('dashboard-section').classList.remove('hidden');
-    document.getElementById('display-name').textContent = currentUser.username;
-
-    // آمار کلی
     let dueCount = 0;
     let mastered = 0;
     const now = Date.now();
 
     vocabData.forEach(lesson => {
         lesson.words.forEach(word => {
+            totalWords++;
             const userWord = currentUser.progress[word.ar];
-            if (userWord) {
+            
+            if (!userWord) {
+                // لغت جدید است (هنوز شروع نشده) - به عنوان قابل مرور حساب می‌شود
+                dueCount++;
+            } else {
                 if (userWord.box >= 6) {
                     mastered++;
                 } else if (now >= userWord.nextReview) {
                     dueCount++;
                 }
-            } else {
-                // لغات جدید هم جزو "قابل مطالعه" محسوب می‌شوند
-                dueCount++; 
             }
         });
     });
 
     document.getElementById('due-count').textContent = dueCount;
     document.getElementById('mastered-words').textContent = mastered;
+    
+    // درصد پیشرفت کل (بر اساس لغات شروع شده و حفظ شده)
+    // فرمول ساده: (مجموع جعبه‌ها / (تعداد کلمات * 6)) * 100
+    let totalBoxes = 0;
+    const maxScore = totalWords * 6;
+    Object.values(currentUser.progress).forEach(p => totalBoxes += p.box);
+    const percent = Math.round((totalBoxes / maxScore) * 100) || 0;
+    document.getElementById('total-progress').textContent = percent + "%";
 
     // ساخت لیست درس‌ها
     const grid = document.getElementById('lessons-grid');
     grid.innerHTML = '';
+    
     vocabData.forEach(lesson => {
-        // محاسبه لغات قابل مرور در این درس خاص
+        // محاسبه لغات قابل مرور در این درس
         let lessonDue = 0;
         lesson.words.forEach(w => {
             const uw = currentUser.progress[w.ar];
-            if (!uw || (uw.box < 6 && now >= uw.nextReview)) lessonDue++;
+            if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
+                lessonDue++;
+            }
         });
 
         const div = document.createElement('div');
         div.className = 'lesson-card';
         div.innerHTML = `
-            ${lessonDue > 0 ? `<span class="due-badge">${lessonDue} مرور</span>` : ''}
+            ${lessonDue > 0 ? `<span class="due-badge">${lessonDue} لغت مرور</span>` : ''}
             <h4>${lesson.title}</h4>
             <span>${lesson.words.length} لغت</span>
         `;
@@ -493,43 +296,40 @@ function showDashboard() {
     });
 }
 
-// شروع مطالعه (حالت درسی یا حالت جامع)
+// --- شروع مطالعه ---
+
+function startGlobalReview() {
+    startSession('global');
+}
+
 function startSession(mode, lessonId = null) {
     currentSessionWords = [];
     const now = Date.now();
 
+    const processWord = (w) => {
+        const uw = currentUser.progress[w.ar];
+        // شرط انتخاب: لغت جدید است یا (حفظ نشده و موعدش رسیده)
+        if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
+            currentSessionWords.push(w);
+        }
+    };
+
     if (mode === 'global') {
-        // تمام لغات تمام درس‌ها
-        vocabData.forEach(l => {
-            l.words.forEach(w => {
-                const uw = currentUser.progress[w.ar];
-                // شرط انتخاب: لغت جدید است یا موعد مرورش رسیده (و حفظ نشده)
-                if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
-                    currentSessionWords.push(w);
-                }
-            });
-        });
+        vocabData.forEach(l => l.words.forEach(processWord));
         document.getElementById('lesson-title').textContent = "مرور جامع لایتنر";
     } else {
-        // فقط لغات یک درس خاص
         const lesson = vocabData.find(l => l.lessonId === lessonId);
         document.getElementById('lesson-title').textContent = lesson.title;
-        
-        lesson.words.forEach(w => {
-            const uw = currentUser.progress[w.ar];
-            if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
-                currentSessionWords.push(w);
-            }
-        });
+        lesson.words.forEach(processWord);
     }
-
-    // شافل کردن
-    currentSessionWords.sort(() => Math.random() - 0.5);
 
     if (currentSessionWords.length === 0) {
-        alert("تبریک! فعلاً لغتی برای مرور ندارید.");
+        alert("تبریک! فعلاً لغتی برای مرور در این بخش ندارید.");
         return;
     }
+
+    // شافل کردن کلمات برای تنوع
+    currentSessionWords.sort(() => Math.random() - 0.5);
 
     currentCardIndex = 0;
     document.getElementById('dashboard-section').classList.add('hidden');
@@ -538,21 +338,18 @@ function startSession(mode, lessonId = null) {
     loadCard();
 }
 
-function startGlobalReview() {
-    startSession('global');
-}
-
 function loadCard() {
     const word = currentSessionWords[currentCardIndex];
-    document.getElementById('progress-counter').textContent = `${currentCardIndex + 1}/${currentSessionWords.length}`;
+    document.getElementById('progress-counter').textContent = `${currentCardIndex + 1} / ${currentSessionWords.length}`;
     
     const userWord = currentUser.progress[word.ar] || { box: 0 };
-    const boxNum = userWord.box === 0 ? "جدید" : `خانه ${userWord.box}`;
+    const boxText = userWord.box === 0 ? "لغت جدید" : `خانه ${userWord.box}`;
     
-    document.getElementById('box-badge').textContent = boxNum;
+    document.getElementById('box-badge').textContent = boxText;
     document.getElementById('card-front').textContent = word.ar;
     document.getElementById('card-back').textContent = word.fa;
 
+    // ریست کردن وضعیت کارت
     const flashcard = document.querySelector('.flashcard');
     const messageBox = document.getElementById('message-box');
     flashcard.classList.remove('flipped');
@@ -563,63 +360,67 @@ function flipCard() {
     document.querySelector('.flashcard').classList.toggle('flipped');
 }
 
-// مدیریت پاسخ و منطق لایتنر
 function handleAnswer(known) {
     const word = currentSessionWords[currentCardIndex];
+    
+    // اگر لغت جدید بود، رکوردش را بساز
+    if (!currentUser.progress[word.ar]) {
+        currentUser.progress[word.ar] = { box: 0, nextReview: 0 };
+    }
+    
     let userWord = currentUser.progress[word.ar];
+    const messageBox = document.getElementById('message-box');
+    const flashcard = document.querySelector('.flashcard');
 
-    // اگر لغت جدید است، ایجادش کن
-    if (!userWord) {
-        userWord = { box: 0, nextReview: 0 };
+    // اگر کارت پشت رو نشده بود، اول بچرخان تا کاربر جواب را ببیند (اختیاری)
+    if (!flashcard.classList.contains('flipped')) {
+        flashcard.classList.add('flipped');
     }
 
-    const messageBox = document.getElementById('message-box');
-    
     if (known) {
-        // ارتقا به جعبه بعدی
+        // ارتقا
         userWord.box++;
         if (userWord.box >= 6) {
-            messageBox.textContent = "عالی! این لغت کامل حفظ شد.";
-            // حفظ شده (دیگر نشان نده)
-            userWord.nextReview = 9999999999999; 
+            messageBox.textContent = "عالی! این لغت کامل حفظ شد و بایگانی می‌شود.";
+            messageBox.style.background = "#d1fae5";
+            messageBox.style.color = "#065f46";
+            userWord.nextReview = 9999999999999; // خیلی دور
         } else {
-            // محاسبه زمان مرور بعدی بر اساس جعبه
-            // box 1 -> index 0 (1 day), box 2 -> index 1 (2 days)...
-            const daysToAdd = LEITNER_INTERVALS[userWord.box - 1];
-            userWord.nextReview = Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
+            // محاسبه زمان بعدی
+            const days = LEITNER_INTERVALS[userWord.box - 1];
+            // زمان حال + تعداد روز (به میلی ثانیه)
+            userWord.nextReview = Date.now() + (days * 24 * 60 * 60 * 1000);
             
-            messageBox.textContent = `آفرین! انتقال به خانه ${userWord.box}. مرور بعدی: ${daysToAdd} روز دیگر.`;
+            messageBox.textContent = `آفرین! انتقال به خانه ${userWord.box}. مرور بعدی: ${days} روز دیگر.`;
+            messageBox.style.background = "#d1fae5";
+            messageBox.style.color = "#065f46";
         }
-        messageBox.style.background = "#d1fae5";
-        messageBox.style.color = "#065f46";
     } else {
-        // سقوط به خانه اول
+        // سقوط
         userWord.box = 1;
-        // باید فردا دوباره مرور شود
-        userWord.nextReview = Date.now() + (1 * 24 * 60 * 60 * 1000);
+        userWord.nextReview = Date.now() + (1 * 24 * 60 * 60 * 1000); // فردا
         
-        messageBox.textContent = "اشکال نداره. برگشت به خانه ۱. فردا مرور کن.";
+        messageBox.textContent = "اشکال نداره. برگشت به خانه ۱. فردا دوباره مرور کن.";
         messageBox.style.background = "#fee2e2";
         messageBox.style.color = "#991b1b";
     }
 
     messageBox.classList.remove('hidden');
-
-    // ذخیره
-    currentUser.progress[word.ar] = userWord;
     saveUserData();
 
-    // رفتن به کارت بعدی
+    // رفتن به کارت بعدی با تاخیر کوتاه
     setTimeout(() => {
         currentCardIndex++;
         if (currentCardIndex < currentSessionWords.length) {
             loadCard();
         } else {
-            alert("مرور امروز تمام شد! خسته نباشید.");
+            alert("مرور این جلسه تمام شد. خسته نباشید!");
             showDashboard();
         }
     }, 1500);
 }
+
+// --- ذخیره و خروجی ---
 
 function saveUserData() {
     let storedData = JSON.parse(localStorage.getItem(DB_KEY));
@@ -631,9 +432,10 @@ function exportData() {
     const storedData = localStorage.getItem(DB_KEY);
     const blob = new Blob([storedData], { type: "application/json" });
     const url = URL.createObjectURL(blob);
+    
     const a = document.createElement('a');
     a.href = url;
-    a.download = "arabic_leitner_backup.json";
+    a.download = `backup_${currentUser.username}_${new Date().toISOString().slice(0,10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
