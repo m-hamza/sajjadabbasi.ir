@@ -203,3 +203,66 @@ header {
     color: #065f46;
     border-radius: 8px;
 }
+:root {
+    --primary: #4f46e5;
+    --secondary: #818cf8;
+    --bg: #f3f4f6;
+    --text: #1f2937;
+    --card-bg: #ffffff;
+    --success: #10b981;
+    --danger: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazir', sans-serif; }
+body { background-color: var(--bg); color: var(--text); display: flex; justify-content: center; min-height: 100vh; padding: 20px; }
+.container { width: 100%; max-width: 600px; transition: all 0.3s ease; }
+.hidden { display: none !important; }
+
+/* Login */
+.login-card { background: var(--card-bg); padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; margin-top: 10vh; }
+.login-card h1 { color: var(--primary); margin-bottom: 1rem; }
+input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+input:focus { border-color: var(--primary); }
+
+/* Buttons */
+button { cursor: pointer; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; transition: transform 0.1s; }
+button:active { transform: scale(0.98); }
+.btn-primary { background: var(--primary); color: white; width: 100%; padding: 12px; margin-top: 10px; }
+.btn-large { font-size: 1.1rem; padding: 15px; background: linear-gradient(45deg, #4f46e5, #818cf8); box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3); }
+.btn-secondary { background: var(--text); color: white; font-size: 0.8rem; }
+.btn-small { background: #e5e7eb; color: var(--text); }
+.btn-success { background: var(--success); color: white; flex: 1; margin: 0 5px; padding: 15px;}
+.btn-danger { background: var(--danger); color: white; flex: 1; margin: 0 5px; padding: 15px;}
+
+/* Dashboard */
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.stats-container { display: flex; gap: 10px; margin-bottom: 20px; }
+.stat-box { flex: 1; background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.stat-box h3 { font-size: 0.8rem; color: #6b7280; }
+.stat-box span { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+
+.global-review-box { text-align: center; margin-bottom: 30px; }
+.note { font-size: 0.8rem; color: #6b7280; margin-top: 5px; }
+.section-title { font-size: 1.1rem; margin-bottom: 10px; color: #374151; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+.lesson-card { background: white; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 2px solid transparent; position: relative; }
+.lesson-card:hover { transform: translateY(-3px); border-color: var(--secondary); box-shadow: 0 5px 15px rgba(79, 70, 229, 0.2); }
+.due-badge { position: absolute; top: -10px; left: -10px; background: var(--danger); color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 12px; box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4); }
+
+/* Flashcard */
+.study-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.flashcard-container { perspective: 1000px; height: 300px; margin-bottom: 20px; }
+.flashcard { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.front { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; }
+.back { background: white; color: var(--text); transform: rotateY(180deg); border: 2px solid var(--primary); }
+.word-arabic { font-size: 3rem; font-weight: bold; margin-bottom: 10px; }
+.word-meaning { font-size: 2rem; font-weight: bold; color: var(--text); }
+.hint { font-size: 0.8rem; opacity: 0.8; margin-top: 20px;}
+.box-badge { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; }
+.controls { display: flex; justify-content: space-between; }
+.message { text-align: center; margin-top: 20px; padding: 15px; background: #d1fae5; color: #065f46; border-radius: 8px; }
+
+

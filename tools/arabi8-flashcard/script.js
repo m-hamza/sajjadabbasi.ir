@@ -362,3 +362,280 @@ function exportData() {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
+
+
+
+/* سیستم لایتنر و مدیریت داده‌ها */
+let currentUser = null;
+let currentSessionWords = [];
+let currentCardIndex = 0;
+
+// فواصل زمانی جعبه لایتنر (به روز)
+// خانه 1: 1 روز، خانه 2: 2 روز، خانه 3: 4 روز، خانه 4: 8 روز، خانه 5: 15 روز
+const LEITNER_INTERVALS = [1, 2, 4, 8, 15];
+const DB_KEY = 'arabicLeitnerApp_v2';
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkLogin();
+});
+
+function checkLogin() {
+    const storedData = JSON.parse(localStorage.getItem(DB_KEY));
+    if (storedData && storedData.currentUser) {
+        currentUser = storedData.users[storedData.currentUser];
+        showDashboard();
+    } else {
+        document.getElementById('login-section').classList.remove('hidden');
+        document.getElementById('dashboard-section').classList.add('hidden');
+        document.getElementById('study-section').classList.add('hidden');
+    }
+}
+
+function login() {
+    const usernameInput = document.getElementById('username').value.trim();
+    const passwordInput = document.getElementById('password').value.trim();
+
+    if (!usernameInput) {
+        alert("لطفا نام کاربری را وارد کنید");
+        return;
+    }
+
+    let storedData = JSON.parse(localStorage.getItem(DB_KEY)) || { users: {}, currentUser: null };
+
+    if (!storedData.users[usernameInput]) {
+        storedData.users[usernameInput] = {
+            username: usernameInput,
+            password: passwordInput,
+            // ساختار دیتای لایتنر: { "word_ar": { box: 1, nextReview: timestamp } }
+            progress: {} 
+        };
+    } else {
+        if (storedData.users[usernameInput].password !== passwordInput) {
+            alert("رمز عبور اشتباه است");
+            return;
+        }
+    }
+
+    storedData.currentUser = usernameInput;
+    localStorage.setItem(DB_KEY, JSON.stringify(storedData));
+    currentUser = storedData.users[usernameInput];
+    
+    checkLogin();
+}
+
+function logout() {
+    let storedData = JSON.parse(localStorage.getItem(DB_KEY));
+    if (storedData) {
+        storedData.currentUser = null;
+        localStorage.setItem(DB_KEY, JSON.stringify(storedData));
+    }
+    location.reload();
+}
+
+// تابعی برای بررسی اینکه آیا موعد مرور لغت رسیده است یا خیر
+function isDue(wordData) {
+    if (!wordData) return true; // اگر دیتایی نیست (لغت جدید)، یعنی باید خوانده شود
+    if (wordData.box >= 6) return false; // اگر خانه 6 است یعنی حفظ شده
+    const now = Date.now();
+    return now >= wordData.nextReview;
+}
+
+function showDashboard() {
+    document.getElementById('login-section').classList.add('hidden');
+    document.getElementById('study-section').classList.add('hidden');
+    document.getElementById('dashboard-section').classList.remove('hidden');
+    document.getElementById('display-name').textContent = currentUser.username;
+
+    // آمار کلی
+    let dueCount = 0;
+    let mastered = 0;
+    const now = Date.now();
+
+    vocabData.forEach(lesson => {
+        lesson.words.forEach(word => {
+            const userWord = currentUser.progress[word.ar];
+            if (userWord) {
+                if (userWord.box >= 6) {
+                    mastered++;
+                } else if (now >= userWord.nextReview) {
+                    dueCount++;
+                }
+            } else {
+                // لغات جدید هم جزو "قابل مطالعه" محسوب می‌شوند
+                dueCount++; 
+            }
+        });
+    });
+
+    document.getElementById('due-count').textContent = dueCount;
+    document.getElementById('mastered-words').textContent = mastered;
+
+    // ساخت لیست درس‌ها
+    const grid = document.getElementById('lessons-grid');
+    grid.innerHTML = '';
+    vocabData.forEach(lesson => {
+        // محاسبه لغات قابل مرور در این درس خاص
+        let lessonDue = 0;
+        lesson.words.forEach(w => {
+            const uw = currentUser.progress[w.ar];
+            if (!uw || (uw.box < 6 && now >= uw.nextReview)) lessonDue++;
+        });
+
+        const div = document.createElement('div');
+        div.className = 'lesson-card';
+        div.innerHTML = `
+            ${lessonDue > 0 ? `<span class="due-badge">${lessonDue} مرور</span>` : ''}
+            <h4>${lesson.title}</h4>
+            <span>${lesson.words.length} لغت</span>
+        `;
+        div.onclick = () => startSession('lesson', lesson.lessonId);
+        grid.appendChild(div);
+    });
+}
+
+// شروع مطالعه (حالت درسی یا حالت جامع)
+function startSession(mode, lessonId = null) {
+    currentSessionWords = [];
+    const now = Date.now();
+
+    if (mode === 'global') {
+        // تمام لغات تمام درس‌ها
+        vocabData.forEach(l => {
+            l.words.forEach(w => {
+                const uw = currentUser.progress[w.ar];
+                // شرط انتخاب: لغت جدید است یا موعد مرورش رسیده (و حفظ نشده)
+                if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
+                    currentSessionWords.push(w);
+                }
+            });
+        });
+        document.getElementById('lesson-title').textContent = "مرور جامع لایتنر";
+    } else {
+        // فقط لغات یک درس خاص
+        const lesson = vocabData.find(l => l.lessonId === lessonId);
+        document.getElementById('lesson-title').textContent = lesson.title;
+        
+        lesson.words.forEach(w => {
+            const uw = currentUser.progress[w.ar];
+            if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
+                currentSessionWords.push(w);
+            }
+        });
+    }
+
+    // شافل کردن
+    currentSessionWords.sort(() => Math.random() - 0.5);
+
+    if (currentSessionWords.length === 0) {
+        alert("تبریک! فعلاً لغتی برای مرور ندارید.");
+        return;
+    }
+
+    currentCardIndex = 0;
+    document.getElementById('dashboard-section').classList.add('hidden');
+    document.getElementById('study-section').classList.remove('hidden');
+    
+    loadCard();
+}
+
+function startGlobalReview() {
+    startSession('global');
+}
+
+function loadCard() {
+    const word = currentSessionWords[currentCardIndex];
+    document.getElementById('progress-counter').textContent = `${currentCardIndex + 1}/${currentSessionWords.length}`;
+    
+    const userWord = currentUser.progress[word.ar] || { box: 0 };
+    const boxNum = userWord.box === 0 ? "جدید" : `خانه ${userWord.box}`;
+    
+    document.getElementById('box-badge').textContent = boxNum;
+    document.getElementById('card-front').textContent = word.ar;
+    document.getElementById('card-back').textContent = word.fa;
+
+    const flashcard = document.querySelector('.flashcard');
+    const messageBox = document.getElementById('message-box');
+    flashcard.classList.remove('flipped');
+    messageBox.classList.add('hidden');
+}
+
+function flipCard() {
+    document.querySelector('.flashcard').classList.toggle('flipped');
+}
+
+// مدیریت پاسخ و منطق لایتنر
+function handleAnswer(known) {
+    const word = currentSessionWords[currentCardIndex];
+    let userWord = currentUser.progress[word.ar];
+
+    // اگر لغت جدید است، ایجادش کن
+    if (!userWord) {
+        userWord = { box: 0, nextReview: 0 };
+    }
+
+    const messageBox = document.getElementById('message-box');
+    
+    if (known) {
+        // ارتقا به جعبه بعدی
+        userWord.box++;
+        if (userWord.box >= 6) {
+            messageBox.textContent = "عالی! این لغت کامل حفظ شد.";
+            // حفظ شده (دیگر نشان نده)
+            userWord.nextReview = 9999999999999; 
+        } else {
+            // محاسبه زمان مرور بعدی بر اساس جعبه
+            // box 1 -> index 0 (1 day), box 2 -> index 1 (2 days)...
+            const daysToAdd = LEITNER_INTERVALS[userWord.box - 1];
+            userWord.nextReview = Date.now() + (daysToAdd * 24 * 60 * 60 * 1000);
+            
+            messageBox.textContent = `آفرین! انتقال به خانه ${userWord.box}. مرور بعدی: ${daysToAdd} روز دیگر.`;
+        }
+        messageBox.style.background = "#d1fae5";
+        messageBox.style.color = "#065f46";
+    } else {
+        // سقوط به خانه اول
+        userWord.box = 1;
+        // باید فردا دوباره مرور شود
+        userWord.nextReview = Date.now() + (1 * 24 * 60 * 60 * 1000);
+        
+        messageBox.textContent = "اشکال نداره. برگشت به خانه ۱. فردا مرور کن.";
+        messageBox.style.background = "#fee2e2";
+        messageBox.style.color = "#991b1b";
+    }
+
+    messageBox.classList.remove('hidden');
+
+    // ذخیره
+    currentUser.progress[word.ar] = userWord;
+    saveUserData();
+
+    // رفتن به کارت بعدی
+    setTimeout(() => {
+        currentCardIndex++;
+        if (currentCardIndex < currentSessionWords.length) {
+            loadCard();
+        } else {
+            alert("مرور امروز تمام شد! خسته نباشید.");
+            showDashboard();
+        }
+    }, 1500);
+}
+
+function saveUserData() {
+    let storedData = JSON.parse(localStorage.getItem(DB_KEY));
+    storedData.users[currentUser.username] = currentUser;
+    localStorage.setItem(DB_KEY, JSON.stringify(storedData));
+}
+
+function exportData() {
+    const storedData = localStorage.getItem(DB_KEY);
+    const blob = new Blob([storedData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "arabic_leitner_backup.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
