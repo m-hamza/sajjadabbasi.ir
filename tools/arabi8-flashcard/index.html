@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فلش‌کارت عربی هشتم | سیستم لایتنر</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-section" class="container fade-in">
+        <div class="card login-card">
+            <h1><i class="fa-solid fa-book-quran"></i> واژه‌نامه عربی هشتم</h1>
+            <p>برای شروع یادگیری وارد شوید</p>
+            <input type="text" id="username" placeholder="نام کاربری">
+            <input type="password" id="password" placeholder="رمز عبور (دلخواه)">
+            <button onclick="login()" class="btn-primary">ورود به سامانه</button>
+        </div>
+    </div>
+
+    <div id="dashboard-section" class="container hidden">
+        <header>
+            <div class="user-info">
+                <span id="display-name">کاربر</span>
+                <button onclick="logout()" class="btn-small"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
+            </div>
+            <div class="actions">
+                <button onclick="exportData()" class="btn-secondary"><i class="fa-solid fa-download"></i> دانلود گزارش پیشرفت (JSON)</button>
+            </div>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>کل لغات</h3>
+                <span id="total-words">0</span>
+            </div>
+            <div class="stat-box">
+                <h3>یاد گرفته شده</h3>
+                <span id="mastered-words">0</span>
+            </div>
+            <div class="stat-box">
+                <h3>در حال یادگیری</h3>
+                <span id="learning-words">0</span>
+            </div>
+        </div>
+
+        <h2><i class="fa-solid fa-layer-group"></i> انتخاب درس</h2>
+        <div id="lessons-grid" class="grid">
+            </div>
+    </div>
+
+    <div id="study-section" class="container hidden">
+        <div class="study-header">
+            <button onclick="showDashboard()" class="btn-small"><i class="fa-solid fa-arrow-right"></i> بازگشت</button>
+            <span id="lesson-title">درس ۱</span>
+            <span id="progress-counter">0/0</span>
+        </div>
+
+        <div class="flashcard-container">
+            <div class="flashcard" onclick="flipCard()">
+                <div class="front">
+                    <span class="word-arabic" id="card-front">...</span>
+                    <span class="hint">برای مشاهده معنی کلیک کنید</span>
+                </div>
+                <div class="back">
+                    <span class="word-meaning" id="card-back">...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="handleAnswer(false)" class="btn-danger"><i class="fa-solid fa-xmark"></i> بلد نبودم</button>
+            <button onclick="handleAnswer(true)" class="btn-success"><i class="fa-solid fa-check"></i> بلد بودم</button>
+        </div>
+        <div id="message-box" class="message hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
