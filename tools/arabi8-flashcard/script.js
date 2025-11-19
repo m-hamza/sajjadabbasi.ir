@@ -147,11 +147,14 @@ const vocabData = [
     }
 ];
 
-/* --- منطق برنامه و سیستم لایتنر --- */
+/* * منطق برنامه و سیستم لایتنر 
+ * --------------------------------
+ */
 
-// تنظیمات
-const DB_KEY = 'arabicFlashcards_vFinal';
-// فواصل زمانی جعبه لایتنر به روز: خانه 1 (1 روز)، خانه 2 (2 روز)، ...
+// کلید ذخیره‌سازی در مرورگر
+const DB_KEY = 'arabic_leitner_final_v2';
+
+// فواصل زمانی جعبه لایتنر (روز)
 const LEITNER_INTERVALS = [1, 2, 4, 8, 15]; 
 
 let currentUser = null;
@@ -168,13 +171,12 @@ function checkLogin() {
     const storedData = localStorage.getItem(DB_KEY);
     if (storedData) {
         const data = JSON.parse(storedData);
-        if (data.currentUser) {
+        if (data.currentUser && data.users[data.currentUser]) {
             currentUser = data.users[data.currentUser];
             showDashboard();
             return;
         }
     }
-    // اگر لاگین نبود
     document.getElementById('login-section').classList.remove('hidden');
     document.getElementById('dashboard-section').classList.add('hidden');
     document.getElementById('study-section').classList.add('hidden');
@@ -184,30 +186,26 @@ function login() {
     const usernameInput = document.getElementById('username').value.trim();
     const passwordInput = document.getElementById('password').value.trim();
 
-    if (!usernameInput || !passwordInput) {
-        alert("لطفا نام کاربری و رمز عبور را وارد کنید");
+    if (!usernameInput) {
+        alert("لطفا نام کاربری را وارد کنید");
         return;
     }
 
     let storedData = JSON.parse(localStorage.getItem(DB_KEY)) || { users: {}, currentUser: null };
 
     if (storedData.users[usernameInput]) {
-        // ورود کاربر قدیمی
-        if (storedData.users[usernameInput].password !== passwordInput) {
+        // کاربر وجود دارد
+        if (storedData.users[usernameInput].password && storedData.users[usernameInput].password !== passwordInput) {
             alert("رمز عبور اشتباه است");
             return;
         }
     } else {
-        // ثبت نام کاربر جدید
-        if(confirm("کاربری با این نام وجود ندارد. آیا می‌خواهید حساب جدید بسازید؟")) {
-            storedData.users[usernameInput] = {
-                username: usernameInput,
-                password: passwordInput,
-                progress: {} // ساختار: { "word_ar": { box: 1, nextReview: timestamp } }
-            };
-        } else {
-            return;
-        }
+        // ایجاد کاربر جدید
+        storedData.users[usernameInput] = {
+            username: usernameInput,
+            password: passwordInput,
+            progress: {} // ساختار: { "لغت": { box: 1, nextReview: timestamp } }
+        };
     }
 
     storedData.currentUser = usernameInput;
@@ -226,7 +224,7 @@ function logout() {
     location.reload();
 }
 
-// --- منطق لایتنر و داشبورد ---
+// --- داشبورد و آمار ---
 
 function showDashboard() {
     document.getElementById('login-section').classList.add('hidden');
@@ -235,7 +233,6 @@ function showDashboard() {
     
     document.getElementById('display-name').textContent = currentUser.username;
 
-    // محاسبه آمار
     let totalWords = 0;
     let dueCount = 0;
     let mastered = 0;
@@ -247,8 +244,7 @@ function showDashboard() {
             const userWord = currentUser.progress[word.ar];
             
             if (!userWord) {
-                // لغت جدید است (هنوز شروع نشده) - به عنوان قابل مرور حساب می‌شود
-                dueCount++;
+                dueCount++; // لغت جدید
             } else {
                 if (userWord.box >= 6) {
                     mastered++;
@@ -262,12 +258,10 @@ function showDashboard() {
     document.getElementById('due-count').textContent = dueCount;
     document.getElementById('mastered-words').textContent = mastered;
     
-    // درصد پیشرفت کل (بر اساس لغات شروع شده و حفظ شده)
-    // فرمول ساده: (مجموع جعبه‌ها / (تعداد کلمات * 6)) * 100
     let totalBoxes = 0;
     const maxScore = totalWords * 6;
     Object.values(currentUser.progress).forEach(p => totalBoxes += p.box);
-    const percent = Math.round((totalBoxes / maxScore) * 100) || 0;
+    const percent = maxScore > 0 ? Math.round((totalBoxes / maxScore) * 100) : 0;
     document.getElementById('total-progress').textContent = percent + "%";
 
     // ساخت لیست درس‌ها
@@ -275,7 +269,6 @@ function showDashboard() {
     grid.innerHTML = '';
     
     vocabData.forEach(lesson => {
-        // محاسبه لغات قابل مرور در این درس
         let lessonDue = 0;
         lesson.words.forEach(w => {
             const uw = currentUser.progress[w.ar];
@@ -296,7 +289,7 @@ function showDashboard() {
     });
 }
 
-// --- شروع مطالعه ---
+// --- مطالعه و لایتنر ---
 
 function startGlobalReview() {
     startSession('global');
@@ -308,7 +301,6 @@ function startSession(mode, lessonId = null) {
 
     const processWord = (w) => {
         const uw = currentUser.progress[w.ar];
-        // شرط انتخاب: لغت جدید است یا (حفظ نشده و موعدش رسیده)
         if (!uw || (uw.box < 6 && now >= uw.nextReview)) {
             currentSessionWords.push(w);
         }
@@ -324,11 +316,11 @@ function startSession(mode, lessonId = null) {
     }
 
     if (currentSessionWords.length === 0) {
-        alert("تبریک! فعلاً لغتی برای مرور در این بخش ندارید.");
+        alert("تبریک! هیچ لغتی برای مرور باقی نمانده است.");
         return;
     }
 
-    // شافل کردن کلمات برای تنوع
+    // تصادفی‌سازی کلمات
     currentSessionWords.sort(() => Math.random() - 0.5);
 
     currentCardIndex = 0;
@@ -349,7 +341,7 @@ function loadCard() {
     document.getElementById('card-front').textContent = word.ar;
     document.getElementById('card-back').textContent = word.fa;
 
-    // ریست کردن وضعیت کارت
+    // ریست وضعیت کارت
     const flashcard = document.querySelector('.flashcard');
     const messageBox = document.getElementById('message-box');
     flashcard.classList.remove('flipped');
@@ -363,64 +355,61 @@ function flipCard() {
 function handleAnswer(known) {
     const word = currentSessionWords[currentCardIndex];
     
-    // اگر لغت جدید بود، رکوردش را بساز
     if (!currentUser.progress[word.ar]) {
         currentUser.progress[word.ar] = { box: 0, nextReview: 0 };
     }
     
     let userWord = currentUser.progress[word.ar];
     const messageBox = document.getElementById('message-box');
+    
+    // اگر کارت هنوز نچرخیده، بچرخان تا کاربر جواب را ببیند
     const flashcard = document.querySelector('.flashcard');
-
-    // اگر کارت پشت رو نشده بود، اول بچرخان تا کاربر جواب را ببیند (اختیاری)
     if (!flashcard.classList.contains('flipped')) {
         flashcard.classList.add('flipped');
     }
 
     if (known) {
-        // ارتقا
+        // پاسخ صحیح: ارتقا به خانه بعد
         userWord.box++;
         if (userWord.box >= 6) {
-            messageBox.textContent = "عالی! این لغت کامل حفظ شد و بایگانی می‌شود.";
-            messageBox.style.background = "#d1fae5";
-            messageBox.style.color = "#065f46";
-            userWord.nextReview = 9999999999999; // خیلی دور
+            messageBox.textContent = "عالی! این لغت کاملاً حفظ شد.";
+            messageBox.style.backgroundColor = "#ecfdf5";
+            messageBox.style.color = "#047857";
+            userWord.nextReview = 9999999999999; // تاریخ دور
         } else {
-            // محاسبه زمان بعدی
             const days = LEITNER_INTERVALS[userWord.box - 1];
-            // زمان حال + تعداد روز (به میلی ثانیه)
             userWord.nextReview = Date.now() + (days * 24 * 60 * 60 * 1000);
             
-            messageBox.textContent = `آفرین! انتقال به خانه ${userWord.box}. مرور بعدی: ${days} روز دیگر.`;
-            messageBox.style.background = "#d1fae5";
-            messageBox.style.color = "#065f46";
+            messageBox.textContent = `آفرین! رفت به خانه ${userWord.box}. مرور بعدی: ${days} روز دیگر.`;
+            messageBox.style.backgroundColor = "#ecfdf5";
+            messageBox.style.color = "#047857";
         }
     } else {
-        // سقوط
+        // پاسخ غلط: بازگشت به خانه اول
         userWord.box = 1;
         userWord.nextReview = Date.now() + (1 * 24 * 60 * 60 * 1000); // فردا
         
-        messageBox.textContent = "اشکال نداره. برگشت به خانه ۱. فردا دوباره مرور کن.";
-        messageBox.style.background = "#fee2e2";
+        messageBox.textContent = "اشکال نداره. برگشت به خانه ۱. فردا مرور کن.";
+        messageBox.style.backgroundColor = "#fef2f2";
         messageBox.style.color = "#991b1b";
     }
 
     messageBox.classList.remove('hidden');
     saveUserData();
 
-    // رفتن به کارت بعدی با تاخیر کوتاه
+    // رفتن به کارت بعد
     setTimeout(() => {
         currentCardIndex++;
         if (currentCardIndex < currentSessionWords.length) {
             loadCard();
         } else {
-            alert("مرور این جلسه تمام شد. خسته نباشید!");
+            alert("مرور تمام شد! خسته نباشید.");
             showDashboard();
         }
     }, 1500);
 }
 
-// --- ذخیره و خروجی ---
+// --- ذخیره و پشتیبان‌گیری ---
 
 function saveUserData() {
     let storedData = JSON.parse(localStorage.getItem(DB_KEY));
@@ -435,7 +424,8 @@ function exportData() {
     
     const a = document.createElement('a');
     a.href = url;
-    a.download = `backup_${currentUser.username}_${new Date().toISOString().slice(0,10)}.json`;
+    const date = new Date().toISOString().slice(0,10);
+    a.download = `backup_arabic_${date}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

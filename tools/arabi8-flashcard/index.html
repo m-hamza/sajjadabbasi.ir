@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جعبه لایتنر عربی هشتم | جامع</title>
+    <title>جعبه لایتنر عربی هشتم | نسخه نهایی</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div id="login-section" class="container fade-in">
         <div class="card login-card">
-            <div class="icon-header"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="icon-header"><i class="fa-solid fa-book-open-reader"></i></div>
             <h1>واژه‌نامه عربی هشتم</h1>
             <p>سیستم هوشمند جعبه لایتنر</p>
             
@@ -21,12 +21,12 @@
                 <input type="text" id="username" placeholder="نام کاربری">
             </div>
             <div class="input-group">
-                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-key"></i>
                 <input type="password" id="password" placeholder="رمز عبور">
             </div>
             
-            <button onclick="login()" class="btn-primary">ورود / ثبت‌نام</button>
-            <p class="info-text">اگر حساب ندارید، با وارد کردن اطلاعات ساخته می‌شود.</p>
+            <button onclick="login()" class="btn-primary">ورود به برنامه</button>
+            <p class="info-text">اطلاعات شما در حافظه مرورگر ذخیره می‌شود.</p>
         </div>
     </div>
 
@@ -35,11 +35,11 @@
             <div class="user-info">
                 <div class="avatar"><i class="fa-solid fa-user"></i></div>
                 <div class="user-details">
-                    <span class="welcome">خوش آمدید</span>
-                    <span id="display-name" class="name">کاربر</span>
+                    <span class="welcome">کاربر گرامی،</span>
+                    <span id="display-name" class="name">...</span>
                 </div>
             </div>
-            <button onclick="logout()" class="btn-icon"><i class="fa-solid fa-right-from-bracket"></i></button>
+            <button onclick="logout()" class="btn-icon" title="خروج"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </header>
 
         <div class="stats-row">
@@ -49,14 +49,14 @@
                 <p>مرور امروز</p>
             </div>
             <div class="stat-card green">
-                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-check"></i>
                 <span id="mastered-words">0</span>
                 <p>حفظ شده</p>
             </div>
             <div class="stat-card blue">
-                <i class="fa-solid fa-layer-group"></i>
+                <i class="fa-solid fa-chart-simple"></i>
                 <span id="total-progress">0%</span>
-                <p>پیشرفت کل</p>
+                <p>پیشرفت</p>
             </div>
         </div>
 
@@ -64,26 +64,26 @@
             <button onclick="startGlobalReview()" class="btn-primary btn-large">
                 <div class="btn-content">
                     <span class="title">مرور جامع لایتنر</span>
-                    <span class="subtitle">لغات تمام درس‌ها که موعدشان رسیده</span>
+                    <span class="subtitle">مرور تمام لغات موعد رسیده</span>
                 </div>
                 <i class="fa-solid fa-play"></i>
             </button>
             <button onclick="exportData()" class="btn-secondary full-width">
-                <i class="fa-solid fa-download"></i> دانلود فایل پشتیبان (JSON)
+                <i class="fa-solid fa-download"></i> دریافت فایل پشتیبان
             </button>
         </div>
 
-        <h3 class="section-title"><i class="fa-solid fa-book-open"></i> انتخاب درس برای مطالعه</h3>
+        <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> فهرست دروس</h3>
         <div id="lessons-grid" class="grid">
             </div>
     </div>
 
     <div id="study-section" class="container hidden">
         <div class="study-header">
-            <button onclick="showDashboard()" class="btn-small"><i class="fa-solid fa-arrow-right"></i> خانه</button>
+            <button onclick="showDashboard()" class="btn-small"><i class="fa-solid fa-house"></i> خانه</button>
             <div class="lesson-info">
-                <span id="lesson-title">درس 1</span>
-                <span id="progress-counter" class="counter">1/10</span>
+                <span id="lesson-title">...</span>
+                <span id="progress-counter" class="counter">0/0</span>
             </div>
             <div class="streak-icon"><i class="fa-solid fa-fire"></i></div>
         </div>
@@ -92,12 +92,12 @@
             <div class="flashcard" onclick="flipCard()">
                 <div class="front">
                     <div class="card-top">
-                        <span class="box-badge" id="box-badge">خانه 1</span>
-                        <i class="fa-solid fa-rotate"></i>
+                        <span class="box-badge" id="box-badge">خانه ۱</span>
+                        <i class="fa-solid fa-rotate text-muted"></i>
                     </div>
                     <div class="card-content">
                         <span class="word-arabic" id="card-front">...</span>
-                        <span class="hint">برای مشاهده معنی ضربه بزنید</span>
+                        <span class="hint">برای دیدن معنی ضربه بزنید</span>
                     </div>
                 </div>
                 <div class="back">
@@ -112,12 +112,12 @@
             <button onclick="handleAnswer(false)" class="btn-control btn-danger">
                 <i class="fa-solid fa-xmark"></i>
                 <span>بلد نبودم</span>
-                <small>برگشت به خانه 1</small>
+                <small>برگشت به خانه ۱</small>
             </button>
             <button onclick="handleAnswer(true)" class="btn-control btn-success">
                 <i class="fa-solid fa-check"></i>
                 <span>بلد بودم</span>
-                <small>رفت به خانه بعد</small>
+                <small>رفتن به خانه بعد</small>
             </button>
         </div>
         
