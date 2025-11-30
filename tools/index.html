@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابزارهای آموزشی | سجاد عباسی</title>
+    <meta name="description" content="مجموعه ابزارهای آموزشی عربی شامل صرف افعال و جعبه لایتنر">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .tools-hero {
+            background: linear-gradient(135deg, #6f42c1 0%, #4a148c 100%);
+            color: #fff;
+            padding: 60px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tools-hero h1 {
+            font-size: 2.8em;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        .tools-hero p {
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin: 0;
+        }
+
+        .tools-hero .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tools-hero .back-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .tools-hero .back-link i {
+            margin-right: 8px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .tool-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(111, 66, 193, 0.2);
+        }
+
+        .tool-card-header {
+            background: linear-gradient(135deg, #6f42c1 0%, #4a148c 100%);
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .tool-card-header .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover .tool-card-header .icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .tool-card-header h2 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .tool-card-header p {
+            margin: 10px 0 0 0;
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .tool-card-body {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .tool-card-body .description {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+
+        .tool-card-body .features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tool-card-body .features li {
+            padding: 10px 0;
+            color: #666;
+            font-size: 0.95em;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .tool-card-body .features li:last-child {
+            border-bottom: none;
+        }
+
+        .tool-card-body .features li i {
+            color: #6f42c1;
+            margin-left: 10px;
+            width: 20px;
+        }
+
+        .tool-card-footer {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .tool-card-footer .btn-visit {
+            display: inline-block;
+            background: linear-gradient(135deg, #6f42c1 0%, #4a148c 100%);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.05em;
+        }
+
+        .tool-card-footer .btn-visit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+        }
+
+        .tool-card-footer .btn-visit i {
+            margin-right: 8px;
+        }
+
+        .coming-soon {
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .coming-soon::after {
+            content: 'به زودی';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ffc107;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .tools-hero h1 {
+                font-size: 2em;
+            }
+
+            .tools-hero p {
+                font-size: 1em;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tool-card-header h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tools-hero">
+            <h1><i class="fas fa-tools"></i> ابزارهای آموزشی</h1>
+            <p>مجموعه ابزارهای کاربردی برای یادگیری و آموزش زبان عربی</p>
+            <a href="../" class="back-link">
+                <i class="fas fa-arrow-right"></i> بازگشت به صفحه اصلی
+            </a>
+        </div>
+
+        <div class="tools-grid">
+            <!-- ابزار صرف افعال عربی -->
+            <a href="arabic-sarfe-afaal/" class="tool-card">
+                <div class="tool-card-header">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h2>صرف افعال عربی</h2>
+                    <p>صرف فعل در زمان‌های مختلف</p>
+                </div>
+                <div class="tool-card-body">
+                    <p class="description">
+                        ابزاری قدرتمند برای صرف افعال عربی در زمان‌های ماضی، مضارع و امر. با استفاده از این ابزار می‌توانید به راحتی تمام صیغه‌های یک فعل را مشاهده کنید.
+                    </p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> صرف در زمان ماضی</li>
+                        <li><i class="fas fa-check-circle"></i> صرف در زمان مضارع</li>
+                        <li><i class="fas fa-check-circle"></i> صرف در زمان امر</li>
+                        <li><i class="fas fa-check-circle"></i> نمایش تمام صیغه‌ها</li>
+                    </ul>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="btn-visit">
+                        <i class="fas fa-external-link-alt"></i> استفاده از ابزار
+                    </span>
+                </div>
+            </a>
+
+            <!-- ابزار جعبه لایتنر -->
+            <a href="arabi8-flashcard/" class="tool-card">
+                <div class="tool-card-header">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <h2>جعبه لایتنر عربی هشتم</h2>
+                    <p>سیستم هوشمند یادگیری لغات</p>
+                </div>
+                <div class="tool-card-body">
+                    <p class="description">
+                        سیستم جعبه لایتنر برای یادگیری و مرور لغات عربی پایه هشتم. با استفاده از این ابزار می‌توانید لغات را به صورت موثر و پایدار به خاطر بسپارید.
+                    </p>
+                    <ul class="features">
+                        <li><i class="fas fa-check-circle"></i> سیستم جعبه لایتنر</li>
+                        <li><i class="fas fa-check-circle"></i> یادگیری هوشمند لغات</li>
+                        <li><i class="fas fa-check-circle"></i> مرور خودکار</li>
+                        <li><i class="fas fa-check-circle"></i> ردیابی پیشرفت</li>
+                    </ul>
+                </div>
+                <div class="tool-card-footer">
+                    <span class="btn-visit">
+                        <i class="fas fa-external-link-alt"></i> استفاده از ابزار
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
