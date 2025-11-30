@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صرف افعال عربی | ماضی، مضارع و امر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/arabic-sarfe-afaal.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="icon-header">
+                <i class="fa-solid fa-language"></i>
+            </div>
+            <h1>صرف افعال عربی</h1>
+            <p>صرف فعل در زمان‌های ماضی، مضارع و امر</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="verb-input">
+                    <i class="fa-solid fa-pen"></i>
+                    وارد کردن فعل (مثال: کَتَبَ، ذَهَبَ، فَتَحَ)
+                </label>
+                <input 
+                    type="text" 
+                    id="verb-input" 
+                    placeholder="فعل را وارد کنید..."
+                    dir="rtl"
+                >
+            </div>
+
+            <div class="tense-selection">
+                <label>
+                    <i class="fa-solid fa-clock"></i>
+                    انتخاب زمان:
+                </label>
+                <div class="tense-buttons">
+                    <button class="tense-btn active" data-tense="past" onclick="selectTense('past')">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        ماضی
+                    </button>
+                    <button class="tense-btn" data-tense="present" onclick="selectTense('present')">
+                        <i class="fa-solid fa-clock"></i>
+                        مضارع
+                    </button>
+                    <button class="tense-btn" data-tense="imperative" onclick="selectTense('imperative')">
+                        <i class="fa-solid fa-hand"></i>
+                        امر
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn-conjugate" onclick="conjugateVerb()">
+                <i class="fa-solid fa-magic"></i>
+                صرف کردن
+            </button>
+        </div>
+
+        <div id="result-section" class="result-section hidden">
+            <div class="result-header">
+                <h2 id="result-title">نتیجه صرف</h2>
+                <button class="btn-close" onclick="closeResult()">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div id="conjugation-table" class="conjugation-table"></div>
+        </div>
+
+        <div class="info-section">
+            <h3><i class="fa-solid fa-info-circle"></i> راهنمای استفاده</h3>
+            <ul>
+                <li>فعل را به صورت ماضی وارد کنید (مثال: کَتَبَ، ذَهَبَ، فَتَحَ)</li>
+                <li>یکی از زمان‌های ماضی، مضارع یا امر را انتخاب کنید</li>
+                <li>روی دکمه "صرف کردن" کلیک کنید</li>
+                <li>نتیجه صرف در جدول نمایش داده می‌شود</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="../../assets/js/arabic-sarfe-afaal.js"></script>
+</body>
+</html>
+
