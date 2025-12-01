@@ -4,12 +4,12 @@ let selectedTense = 'past';
 // انتخاب زمان
 function selectTense(tense) {
     selectedTense = tense;
-    
+
     // حذف کلاس active از همه دکمه‌ها
     document.querySelectorAll('.tense-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    
+
     // اضافه کردن کلاس active به دکمه انتخاب شده
     document.querySelector(`[data-tense="${tense}"]`).classList.add('active');
 }
@@ -18,7 +18,7 @@ function selectTense(tense) {
 function extractRoot(verb) {
     // حذف فتحه‌ها و حرکات
     let cleaned = verb.replace(/[َُِْ]/g, '').trim();
-    
+
     // استخراج ریشه سه حرفی (مثال: کَتَبَ -> کتب)
     if (cleaned.length >= 3) {
         // اگر با الف شروع شود (مثل اَکَلَ)
@@ -30,265 +30,370 @@ function extractRoot(verb) {
             return cleaned.substring(0, 3);
         }
     }
-    
+
     return cleaned;
 }
 
-// صرف فعل در زمان ماضی (بدون اعراب)
+// اضافه کردن اعراب با رنگ قرمز
+function addDiacriticRed(letter, diacritic) {
+    if (diacritic) {
+        return `${letter}<span class="diacritic-red">${diacritic}</span>`;
+    }
+    return letter;
+}
+
+// صرف فعل در زمان ماضی با اعراب قرمز
+function addPastDiacritics(faal, ayn, lam, suffix) {
+    if (suffix === '') {
+        // هو: ضَرَبَ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}`;
+    } else if (suffix === 'ا') {
+        // هما (مذکر): ضَرَبَا
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}ا`;
+    } else if (suffix === 'وا') {
+        // هم: ضَرَبُوا
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('و', 'ُ')}ا`;
+    } else if (suffix === 'ت') {
+        // هی: ضَرَبَتْ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ت', 'ْ')}`;
+    } else if (suffix === 'تا') {
+        // هما (مؤنث): ضَرَبَتَا
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}ت${addDiacriticRed('ا', 'َ')}`;
+    } else if (suffix === 'ن') {
+        // هن: ضَرَبْنَ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ن', 'َ')}`;
+    } else if (suffix === 'ت') {
+        // انت (مذکر): ضَرَبْتَ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ت', 'َ')}`;
+    } else if (suffix === 'تما') {
+        // انتما: ضَرَبْتُمَا
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ت${addDiacriticRed('و', 'ُ')}م${addDiacriticRed('ا', 'َ')}`;
+    } else if (suffix === 'تم') {
+        // انتم: ضَرَبْتُمْ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ت${addDiacriticRed('و', 'ُ')}م`;
+    } else if (suffix === 'ت') {
+        // انت (مؤنث): ضَرَبْتِ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ت${addDiacriticRed('', 'ِ')}`;
+    } else if (suffix === 'تن') {
+        // انتن: ضَرَبْتُنَّ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ت${addDiacriticRed('و', 'ُ')}نَّ`;
+    } else if (suffix === 'ت') {
+        // انا: ضَرَبْتُ
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ت${addDiacriticRed('', 'ُ')}`;
+    } else if (suffix === 'نا') {
+        // نحن: ضَرَبْنَا
+        return `${addDiacriticRed(faal, 'َ')}${addDiacriticRed(ayn, 'ْ')}ن${addDiacriticRed('ا', 'َ')}`;
+    }
+    return `${faal}${ayn}${lam}${suffix}`;
+}
+
+// صرف فعل در زمان مضارع با اعراب قرمز
+function addPresentDiacritics(prefix, faal, ayn, lam, suffix) {
+    let presentFaal = faal;
+    if (faal === 'و' || faal === 'ي') {
+        presentFaal = 'ي';
+    }
+
+    if (suffix === '') {
+        // هو، هی، انت (مذکر)، انا: یَضْرِبُ، تَضْرِبُ، تَضْرِبُ، أَضْرِبُ
+        return `${prefix}${addDiacriticRed(presentFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${addDiacriticRed(lam, 'ُ')}`;
+    } else if (suffix === 'ان') {
+        // هما: یَضْرِبَانِ، تَضْرِبَانِ
+        return `${prefix}${addDiacriticRed(presentFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ا', 'َ')}ن${addDiacriticRed('', 'ِ')}`;
+    } else if (suffix === 'ون') {
+        // هم، انتم: یَضْرِبُونَ، تَضْرِبُونَ
+        return `${prefix}${addDiacriticRed(presentFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('و', 'ُ')}ن${addDiacriticRed('', 'َ')}`;
+    } else if (suffix === 'ين') {
+        // انت (مؤنث): تَضْرِبِینَ
+        return `${prefix}${addDiacriticRed(presentFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}ي${addDiacriticRed('ن', 'َ')}`;
+    } else if (suffix === 'ن') {
+        // هن، انتن: یَضْرِبْنَ، تَضْرِبْنَ
+        return `${prefix}${addDiacriticRed(presentFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ن', 'َ')}`;
+    }
+    return `${prefix}${presentFaal}${ayn}${lam}${suffix}`;
+}
+
+// صرف فعل در زمان امر با اعراب قرمز
+function addImperativeDiacritics(faal, ayn, lam, suffix) {
+    let imperativeFaal = faal;
+    if (faal === 'و' || faal === 'ي') {
+        imperativeFaal = 'ي';
+    }
+
+    if (suffix === '') {
+        // انت (مذکر): اِضْرِبْ
+        return `${addDiacriticRed('ا', 'ِ')}${addDiacriticRed(imperativeFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${addDiacriticRed(lam, 'ْ')}`;
+    } else if (suffix === 'ا') {
+        // انتما: اِضْرِبَا
+        return `${addDiacriticRed('ا', 'ِ')}${addDiacriticRed(imperativeFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ا', 'َ')}`;
+    } else if (suffix === 'وا') {
+        // انتم: اِضْرِبُوا
+        return `${addDiacriticRed('ا', 'ِ')}${addDiacriticRed(imperativeFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('و', 'ُ')}ا`;
+    } else if (suffix === 'ي') {
+        // انت (مؤنث): اِضْرِبِی
+        return `${addDiacriticRed('ا', 'ِ')}${addDiacriticRed(imperativeFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ي', '')}`;
+    } else if (suffix === 'ن') {
+        // انتن: اِضْرِبْنَ
+        return `${addDiacriticRed('ا', 'ِ')}${addDiacriticRed(imperativeFaal, 'ْ')}${addDiacriticRed(ayn, 'َ')}${lam}${addDiacriticRed('ن', 'َ')}`;
+    }
+    return `${addDiacriticRed('ا', 'ِ')}${imperativeFaal}${ayn}${lam}${suffix}`;
+}
+
+// صرف فعل در زمان ماضی با اعراب قرمز
 function conjugatePast(verb) {
     const root = extractRoot(verb);
     if (root.length < 3) return null;
-    
+
     const faal = root[0]; // ف
     const ayn = root[1];  // ع
     const lam = root[2];  // ل
-    
+
     return {
         root: root,
         conjugations: [
-            { 
+            {
                 form: 'مفرد مذکر غایب',
                 pronoun: 'هُوَ',
-                conjugation: `${faal}${ayn}${lam}`,
-                meaning: '(آن مرد) زد'
+                conjugation: addPastDiacritics(faal, ayn, lam, ''),
+                meaning: 'او (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مثنی مذکر غایب',
                 pronoun: 'هُمَا',
-                conjugation: `${faal}${ayn}${lam}ا`,
-                meaning: '(آن دو مرد) زدند'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ا'),
+                meaning: 'آن دو (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'جمع مذکر غایب',
                 pronoun: 'هُمْ',
-                conjugation: `${faal}${ayn}${lam}وا`,
-                meaning: '(آن مردان) زدند'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'وا'),
+                meaning: 'آن‌ها (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مفرد مؤنث غایب',
                 pronoun: 'هِیَ',
-                conjugation: `${faal}${ayn}${lam}ت`,
-                meaning: '(آن زن) زد'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
+                meaning: 'او (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مثنی مؤنث غایب',
                 pronoun: 'هُمَا',
-                conjugation: `${faal}${ayn}${lam}تا`,
-                meaning: '(آن دو زن) زدند'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'تا'),
+                meaning: 'آن دو (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'جمع مؤنث غایب',
                 pronoun: 'هُنَّ',
-                conjugation: `${faal}${ayn}${lam}ن`,
-                meaning: '(آن زنان) زدند'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ن'),
+                meaning: 'آن‌ها (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مفرد مذکر مخاطب',
                 pronoun: 'أَنْتَ',
-                conjugation: `${faal}${ayn}${lam}ت`,
-                meaning: '(تو یک مرد) زدی'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
+                meaning: 'تو (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مثنی مذکر مخاطب',
                 pronoun: 'أَنْتُمَا',
-                conjugation: `${faal}${ayn}${lam}تما`,
-                meaning: '(شما دو مرد) زدید'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
+                meaning: 'شما دو (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'جمع مذکر مخاطب',
                 pronoun: 'أَنْتُمْ',
-                conjugation: `${faal}${ayn}${lam}تم`,
-                meaning: '(شما مردان) زدید'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'تم'),
+                meaning: 'شما (مذکر) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مفرد مؤنث مخاطب',
                 pronoun: 'أَنْتِ',
-                conjugation: `${faal}${ayn}${lam}ت`,
-                meaning: '(تو یک زن) زدی'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
+                meaning: 'تو (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'مثنی مؤنث مخاطب',
                 pronoun: 'أَنْتُمَا',
-                conjugation: `${faal}${ayn}${lam}تما`,
-                meaning: '(شما دو زن) زدید'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
+                meaning: 'شما دو (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'جمع مؤنث مخاطب',
                 pronoun: 'أَنْتُنَّ',
-                conjugation: `${faal}${ayn}${lam}تن`,
-                meaning: '(شما زنان) زدید'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'تن'),
+                meaning: 'شما (مؤنث) + فعل ماضی'
             },
-            { 
+            {
                 form: 'متکلم وحده',
                 pronoun: 'أَنَا',
-                conjugation: `${faal}${ayn}${lam}ت`,
-                meaning: '(من) زدم'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
+                meaning: 'من + فعل ماضی'
             },
-            { 
+            {
                 form: 'متکلم مع الغیر',
                 pronoun: 'نَحْنُ',
-                conjugation: `${faal}${ayn}${lam}نا`,
-                meaning: '(ما) زدیم'
+                conjugation: addPastDiacritics(faal, ayn, lam, 'نا'),
+                meaning: 'ما + فعل ماضی'
             }
         ]
     };
 }
 
-// صرف فعل در زمان مضارع
+// صرف فعل در زمان مضارع با اعراب قرمز
 function conjugatePresent(verb) {
     const root = extractRoot(verb);
     if (root.length < 3) return null;
-    
+
     const faal = root[0]; // ف
     const ayn = root[1];  // ع
     const lam = root[2];  // ل
-    
+
     // در مضارع، حرف اول ریشه (ف) ممکن است تغییر کند
     let presentFaal = faal;
     if (faal === 'و' || faal === 'ي') {
         presentFaal = 'ي';
     }
-    
+
     return [
-        { 
+        {
             form: 'مفرد مذکر غایب',
             pronoun: 'هُوَ',
-            conjugation: `ي${presentFaal}${ayn}${lam}`,
-            meaning: 'می‌زند (آن مرد)'
+            conjugation: addPresentDiacritics('يَ', faal, ayn, lam, ''),
+            meaning: 'می‌کند (او مذکر)'
         },
-        { 
+        {
             form: 'مثنی مذکر غایب',
             pronoun: 'هُمَا',
-            conjugation: `ي${presentFaal}${ayn}${lam}ان`,
-            meaning: 'می‌زنند (آن دو مرد)'
+            conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ان'),
+            meaning: 'می‌کنند (آن دو مذکر)'
         },
-        { 
+        {
             form: 'جمع مذکر غایب',
             pronoun: 'هُمْ',
-            conjugation: `ي${presentFaal}${ayn}${lam}ون`,
-            meaning: 'می‌زنند (آن مردان)'
+            conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ون'),
+            meaning: 'می‌کنند (آن‌ها مذکر)'
         },
-        { 
+        {
             form: 'مفرد مؤنث غایب',
             pronoun: 'هِیَ',
-            conjugation: `ت${presentFaal}${ayn}${lam}`,
-            meaning: 'می‌زند (آن زن)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
+            meaning: 'می‌کند (او مؤنث)'
         },
-        { 
+        {
             form: 'مثنی مؤنث غایب',
             pronoun: 'هُمَا',
-            conjugation: `ت${presentFaal}${ayn}${lam}ان`,
-            meaning: 'می‌زنند (آن دو زن)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
+            meaning: 'می‌کنند (آن دو مؤنث)'
         },
-        { 
+        {
             form: 'جمع مؤنث غایب',
             pronoun: 'هُنَّ',
-            conjugation: `ي${presentFaal}${ayn}${lam}ن`,
-            meaning: 'می‌زنند (آن زنان)'
+            conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ن'),
+            meaning: 'می‌کنند (آن‌ها مؤنث)'
         },
-        { 
+        {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
-            conjugation: `ت${presentFaal}${ayn}${lam}`,
-            meaning: 'می‌زنی (تو یک مرد)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
+            meaning: 'می‌کنی (تو مذکر)'
         },
-        { 
+        {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
-            conjugation: `ت${presentFaal}${ayn}${lam}ان`,
-            meaning: 'می‌زنید (شما دو مرد)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
+            meaning: 'می‌کنید (شما دو مذکر)'
         },
-        { 
+        {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
-            conjugation: `ت${presentFaal}${ayn}${lam}ون`,
-            meaning: 'می‌زنید (شما مردان)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ون'),
+            meaning: 'می‌کنید (شما مذکر)'
         },
-        { 
+        {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
-            conjugation: `ت${presentFaal}${ayn}${lam}ين`,
-            meaning: 'می‌زنی (تو یک زن)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ين'),
+            meaning: 'می‌کنی (تو مؤنث)'
         },
-        { 
+        {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
-            conjugation: `ت${presentFaal}${ayn}${lam}ان`,
-            meaning: 'می‌زنید (شما دو زن)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
+            meaning: 'می‌کنید (شما دو مؤنث)'
         },
-        { 
+        {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
-            conjugation: `ت${presentFaal}${ayn}${lam}ن`,
-            meaning: 'می‌زنید (شما زنان)'
+            conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ن'),
+            meaning: 'می‌کنید (شما مؤنث)'
         },
-        { 
+        {
             form: 'متکلم وحده',
             pronoun: 'أَنَا',
-            conjugation: `أ${presentFaal}${ayn}${lam}`,
-            meaning: 'می‌زنم (من)'
+            conjugation: addPresentDiacritics('أَ', faal, ayn, lam, ''),
+            meaning: 'می‌کنم (من)'
         },
-        { 
+        {
             form: 'متکلم مع الغیر',
             pronoun: 'نَحْنُ',
-            conjugation: `ن${presentFaal}${ayn}${lam}`,
-            meaning: 'می‌زنیم (ما)'
+            conjugation: addPresentDiacritics('نَ', faal, ayn, lam, ''),
+            meaning: 'می‌کنیم (ما)'
         }
     ];
 }
 
-// صرف فعل در زمان امر
+// صرف فعل در زمان امر با اعراب قرمز
 function conjugateImperative(verb) {
     const root = extractRoot(verb);
     if (root.length < 3) return null;
-    
+
     const faal = root[0]; // ف
     const ayn = root[1];  // ع
     const lam = root[2];  // ل
-    
+
     // در امر، حرف اول ریشه (ف) ممکن است تغییر کند
     let imperativeFaal = faal;
     if (faal === 'و' || faal === 'ي') {
         imperativeFaal = 'ي';
     }
-    
+
     // امر فقط برای دوم شخص است
     return [
-        { 
+        {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}`,
-            meaning: 'بزن (تو یک مرد)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, ''),
+            meaning: 'بکن (تو مذکر)'
         },
-        { 
+        {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}ا`,
-            meaning: 'بزنید (شما دو مرد)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
+            meaning: 'بکنید (شما دو مذکر)'
         },
-        { 
+        {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}وا`,
-            meaning: 'بزنید (شما مردان)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, 'وا'),
+            meaning: 'بکنید (شما مذکر)'
         },
-        { 
+        {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}ي`,
-            meaning: 'بزن (تو یک زن)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, 'ي'),
+            meaning: 'بکن (تو مؤنث)'
         },
-        { 
+        {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}ا`,
-            meaning: 'بزنید (شما دو زن)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
+            meaning: 'بکنید (شما دو مؤنث)'
         },
-        { 
+        {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
-            conjugation: `ا${imperativeFaal}${ayn}${lam}ن`,
-            meaning: 'بزنید (شما زنان)'
+            conjugation: addImperativeDiacritics(faal, ayn, lam, 'ن'),
+            meaning: 'بکنید (شما مؤنث)'
         }
     ];
 }
@@ -296,16 +401,16 @@ function conjugateImperative(verb) {
 // تابع اصلی صرف کردن
 function conjugateVerb() {
     const verbInput = document.getElementById('verb-input').value.trim();
-    
+
     if (!verbInput) {
         alert('لطفاً فعل را وارد کنید');
         return;
     }
-    
+
     let result = null;
     let tenseName = '';
-    
-    switch(selectedTense) {
+
+    switch (selectedTense) {
         case 'past':
             result = conjugatePast(verbInput);
             tenseName = 'ماضی';
@@ -319,12 +424,12 @@ function conjugateVerb() {
             tenseName = 'امر';
             break;
     }
-    
+
     if (!result || (selectedTense === 'past' && !result.conjugations) || (selectedTense !== 'past' && result.length === 0)) {
         alert('فعل وارد شده معتبر نیست. لطفاً فعل را به صورت صحیح وارد کنید (مثال: کَتَبَ)');
         return;
     }
-    
+
     // نمایش نتیجه
     if (selectedTense === 'past') {
         displayResult(verbInput, tenseName, result.conjugations, result.root);
@@ -339,9 +444,9 @@ function displayResult(verb, tenseName, conjugations, root) {
     const resultTitle = document.getElementById('result-title');
     const rootInfo = document.getElementById('root-info');
     const tableContainer = document.getElementById('conjugation-table');
-    
+
     resultTitle.textContent = `صرف فعل "${verb}" در زمان ${tenseName}`;
-    
+
     // نمایش ریشه برای ماضی
     if (root && tenseName === 'ماضی') {
         rootInfo.innerHTML = `
@@ -353,7 +458,7 @@ function displayResult(verb, tenseName, conjugations, root) {
     } else {
         rootInfo.classList.add('hidden');
     }
-    
+
     // ایجاد جدول با 4 ستون
     let tableHTML = `
         <table>
@@ -367,7 +472,7 @@ function displayResult(verb, tenseName, conjugations, root) {
             </thead>
             <tbody>
     `;
-    
+
     conjugations.forEach(item => {
         tableHTML += `
             <tr>
@@ -378,15 +483,15 @@ function displayResult(verb, tenseName, conjugations, root) {
             </tr>
         `;
     });
-    
+
     tableHTML += `
             </tbody>
         </table>
     `;
-    
+
     tableContainer.innerHTML = tableHTML;
     resultSection.classList.remove('hidden');
-    
+
     // اسکرول به نتیجه
     resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
@@ -397,10 +502,10 @@ function closeResult() {
 }
 
 // امکان استفاده از Enter برای صرف کردن
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const verbInput = document.getElementById('verb-input');
-    
-    verbInput.addEventListener('keypress', function(e) {
+
+    verbInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             conjugateVerb();
         }

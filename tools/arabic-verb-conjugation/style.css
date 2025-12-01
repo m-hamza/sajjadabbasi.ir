@@ -313,6 +313,11 @@ table tbody tr:hover {
     font-family: 'Vazir', sans-serif;
 }
 
+.diacritic-red {
+    color: #ef4444;
+    font-weight: normal;
+}
+
 .form-label {
     font-weight: bold;
     color: var(--text-main);
