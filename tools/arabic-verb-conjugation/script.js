@@ -155,85 +155,85 @@ function conjugatePast(verb) {
                 form: 'مفرد مذکر غایب',
                 pronoun: 'هُوَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, ''),
-                meaning: 'او (مذکر) + فعل ماضی'
+                meaning: 'او (مذکر) در گذشته انجام داد'
             },
             {
                 form: 'مثنی مذکر غایب',
                 pronoun: 'هُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ا'),
-                meaning: 'آن دو (مذکر) + فعل ماضی'
+                meaning: 'آن دو (مذکر) در گذشته انجام دادند'
             },
             {
                 form: 'جمع مذکر غایب',
                 pronoun: 'هُمْ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'وا'),
-                meaning: 'آن‌ها (مذکر) + فعل ماضی'
+                meaning: 'آن‌ها (مذکر) در گذشته انجام دادند'
             },
             {
                 form: 'مفرد مؤنث غایب',
                 pronoun: 'هِیَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'او (مؤنث) + فعل ماضی'
+                meaning: 'او (مؤنث) در گذشته انجام داد'
             },
             {
                 form: 'مثنی مؤنث غایب',
                 pronoun: 'هُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تا'),
-                meaning: 'آن دو (مؤنث) + فعل ماضی'
+                meaning: 'آن دو (مؤنث) در گذشته انجام دادند'
             },
             {
                 form: 'جمع مؤنث غایب',
                 pronoun: 'هُنَّ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ن'),
-                meaning: 'آن‌ها (مؤنث) + فعل ماضی'
+                meaning: 'آن‌ها (مؤنث) در گذشته انجام دادند'
             },
             {
                 form: 'مفرد مذکر مخاطب',
                 pronoun: 'أَنْتَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'تو (مذکر) + فعل ماضی'
+                meaning: 'تو (مذکر) در گذشته انجام دادی'
             },
             {
                 form: 'مثنی مذکر مخاطب',
                 pronoun: 'أَنْتُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
-                meaning: 'شما دو (مذکر) + فعل ماضی'
+                meaning: 'شما دو (مذکر) در گذشته انجام دادید'
             },
             {
                 form: 'جمع مذکر مخاطب',
                 pronoun: 'أَنْتُمْ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تم'),
-                meaning: 'شما (مذکر) + فعل ماضی'
+                meaning: 'شما (مذکر) در گذشته انجام دادید'
             },
             {
                 form: 'مفرد مؤنث مخاطب',
                 pronoun: 'أَنْتِ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'تو (مؤنث) + فعل ماضی'
+                meaning: 'تو (مؤنث) در گذشته انجام دادی'
             },
             {
                 form: 'مثنی مؤنث مخاطب',
                 pronoun: 'أَنْتُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
-                meaning: 'شما دو (مؤنث) + فعل ماضی'
+                meaning: 'شما دو (مؤنث) در گذشته انجام دادید'
             },
             {
                 form: 'جمع مؤنث مخاطب',
                 pronoun: 'أَنْتُنَّ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تن'),
-                meaning: 'شما (مؤنث) + فعل ماضی'
+                meaning: 'شما (مؤنث) در گذشته انجام دادید'
             },
             {
                 form: 'متکلم وحده',
                 pronoun: 'أَنَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'من + فعل ماضی'
+                meaning: 'من در گذشته انجام دادم'
             },
             {
                 form: 'متکلم مع الغیر',
                 pronoun: 'نَحْنُ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'نا'),
-                meaning: 'ما + فعل ماضی'
+                meaning: 'ما در گذشته انجام دادیم'
             }
         ]
     };
@@ -259,85 +259,85 @@ function conjugatePresent(verb) {
             form: 'مفرد مذکر غایب',
             pronoun: 'هُوَ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, ''),
-            meaning: 'می‌کند (او مذکر)'
+            meaning: 'او (مذکر) در حال انجام می‌دهد'
         },
         {
             form: 'مثنی مذکر غایب',
             pronoun: 'هُمَا',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ان'),
-            meaning: 'می‌کنند (آن دو مذکر)'
+            meaning: 'آن دو (مذکر) در حال انجام می‌دهند'
         },
         {
             form: 'جمع مذکر غایب',
             pronoun: 'هُمْ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ون'),
-            meaning: 'می‌کنند (آن‌ها مذکر)'
+            meaning: 'آن‌ها (مذکر) در حال انجام می‌دهند'
         },
         {
             form: 'مفرد مؤنث غایب',
             pronoun: 'هِیَ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
-            meaning: 'می‌کند (او مؤنث)'
+            meaning: 'او (مؤنث) در حال انجام می‌دهد'
         },
         {
             form: 'مثنی مؤنث غایب',
             pronoun: 'هُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'می‌کنند (آن دو مؤنث)'
+            meaning: 'آن دو (مؤنث) در حال انجام می‌دهند'
         },
         {
             form: 'جمع مؤنث غایب',
             pronoun: 'هُنَّ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ن'),
-            meaning: 'می‌کنند (آن‌ها مؤنث)'
+            meaning: 'آن‌ها (مؤنث) در حال انجام می‌دهند'
         },
         {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
-            meaning: 'می‌کنی (تو مذکر)'
+            meaning: 'تو (مذکر) در حال انجام می‌دهی'
         },
         {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'می‌کنید (شما دو مذکر)'
+            meaning: 'شما دو (مذکر) در حال انجام می‌دهید'
         },
         {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ون'),
-            meaning: 'می‌کنید (شما مذکر)'
+            meaning: 'شما (مذکر) در حال انجام می‌دهید'
         },
         {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ين'),
-            meaning: 'می‌کنی (تو مؤنث)'
+            meaning: 'تو (مؤنث) در حال انجام می‌دهی'
         },
         {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'می‌کنید (شما دو مؤنث)'
+            meaning: 'شما دو (مؤنث) در حال انجام می‌دهید'
         },
         {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ن'),
-            meaning: 'می‌کنید (شما مؤنث)'
+            meaning: 'شما (مؤنث) در حال انجام می‌دهید'
         },
         {
             form: 'متکلم وحده',
             pronoun: 'أَنَا',
             conjugation: addPresentDiacritics('أَ', faal, ayn, lam, ''),
-            meaning: 'می‌کنم (من)'
+            meaning: 'من در حال انجام می‌دهم'
         },
         {
             form: 'متکلم مع الغیر',
             pronoun: 'نَحْنُ',
             conjugation: addPresentDiacritics('نَ', faal, ayn, lam, ''),
-            meaning: 'می‌کنیم (ما)'
+            meaning: 'ما در حال انجام می‌دهیم'
         }
     ];
 }
@@ -363,37 +363,37 @@ function conjugateImperative(verb) {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, ''),
-            meaning: 'بکن (تو مذکر)'
+            meaning: 'تو (مذکر) دستور انجام بده'
         },
         {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
-            meaning: 'بکنید (شما دو مذکر)'
+            meaning: 'شما دو (مذکر) دستور انجام بدهید'
         },
         {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'وا'),
-            meaning: 'بکنید (شما مذکر)'
+            meaning: 'شما (مذکر) دستور انجام بدهید'
         },
         {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ي'),
-            meaning: 'بکن (تو مؤنث)'
+            meaning: 'تو (مؤنث) دستور انجام بده'
         },
         {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
-            meaning: 'بکنید (شما دو مؤنث)'
+            meaning: 'شما دو (مؤنث) دستور انجام بدهید'
         },
         {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ن'),
-            meaning: 'بکنید (شما مؤنث)'
+            meaning: 'شما (مؤنث) دستور انجام بدهید'
         }
     ];
 }
