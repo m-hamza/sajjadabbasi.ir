@@ -155,85 +155,85 @@ function conjugatePast(verb) {
                 form: 'مفرد مذکر غایب',
                 pronoun: 'هُوَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, ''),
-                meaning: 'او (مذکر) در گذشته انجام داد'
+                meaning: 'راهنما: او (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مثنی مذکر غایب',
                 pronoun: 'هُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ا'),
-                meaning: 'آن دو (مذکر) در گذشته انجام دادند'
+                meaning: 'راهنما: آن دو (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'جمع مذکر غایب',
                 pronoun: 'هُمْ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'وا'),
-                meaning: 'آن‌ها (مذکر) در گذشته انجام دادند'
+                meaning: 'راهنما: آن‌ها (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مفرد مؤنث غایب',
                 pronoun: 'هِیَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'او (مؤنث) در گذشته انجام داد'
+                meaning: 'راهنما: او (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مثنی مؤنث غایب',
                 pronoun: 'هُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تا'),
-                meaning: 'آن دو (مؤنث) در گذشته انجام دادند'
+                meaning: 'راهنما: آن دو (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'جمع مؤنث غایب',
                 pronoun: 'هُنَّ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ن'),
-                meaning: 'آن‌ها (مؤنث) در گذشته انجام دادند'
+                meaning: 'راهنما: آن‌ها (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مفرد مذکر مخاطب',
                 pronoun: 'أَنْتَ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'تو (مذکر) در گذشته انجام دادی'
+                meaning: 'راهنما: تو (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مثنی مذکر مخاطب',
                 pronoun: 'أَنْتُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
-                meaning: 'شما دو (مذکر) در گذشته انجام دادید'
+                meaning: 'راهنما: شما دو (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'جمع مذکر مخاطب',
                 pronoun: 'أَنْتُمْ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تم'),
-                meaning: 'شما (مذکر) در گذشته انجام دادید'
+                meaning: 'راهنما: شما (مذکر) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مفرد مؤنث مخاطب',
                 pronoun: 'أَنْتِ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'تو (مؤنث) در گذشته انجام دادی'
+                meaning: 'راهنما: تو (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'مثنی مؤنث مخاطب',
                 pronoun: 'أَنْتُمَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تما'),
-                meaning: 'شما دو (مؤنث) در گذشته انجام دادید'
+                meaning: 'راهنما: شما دو (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'جمع مؤنث مخاطب',
                 pronoun: 'أَنْتُنَّ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'تن'),
-                meaning: 'شما (مؤنث) در گذشته انجام دادید'
+                meaning: 'راهنما: شما (مؤنث) در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'متکلم وحده',
                 pronoun: 'أَنَا',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'ت'),
-                meaning: 'من در گذشته انجام دادم'
+                meaning: 'راهنما: من در زمان گذشته؛ فعل اصلی را جایگزین کن'
             },
             {
                 form: 'متکلم مع الغیر',
                 pronoun: 'نَحْنُ',
                 conjugation: addPastDiacritics(faal, ayn, lam, 'نا'),
-                meaning: 'ما در گذشته انجام دادیم'
+                meaning: 'راهنما: ما در زمان گذشته؛ فعل اصلی را جایگزین کن'
             }
         ]
     };
@@ -259,85 +259,85 @@ function conjugatePresent(verb) {
             form: 'مفرد مذکر غایب',
             pronoun: 'هُوَ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, ''),
-            meaning: 'او (مذکر) در حال انجام می‌دهد'
+            meaning: 'راهنما: او (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهد\" ترجمه کن'
         },
         {
             form: 'مثنی مذکر غایب',
             pronoun: 'هُمَا',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ان'),
-            meaning: 'آن دو (مذکر) در حال انجام می‌دهند'
+            meaning: 'راهنما: آن دو (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهند\"'
         },
         {
             form: 'جمع مذکر غایب',
             pronoun: 'هُمْ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ون'),
-            meaning: 'آن‌ها (مذکر) در حال انجام می‌دهند'
+            meaning: 'راهنما: آن‌ها (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهند\"'
         },
         {
             form: 'مفرد مؤنث غایب',
             pronoun: 'هِیَ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
-            meaning: 'او (مؤنث) در حال انجام می‌دهد'
+            meaning: 'راهنما: او (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهد\"'
         },
         {
             form: 'مثنی مؤنث غایب',
             pronoun: 'هُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'آن دو (مؤنث) در حال انجام می‌دهند'
+            meaning: 'راهنما: آن دو (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهند\"'
         },
         {
             form: 'جمع مؤنث غایب',
             pronoun: 'هُنَّ',
             conjugation: addPresentDiacritics('يَ', faal, ayn, lam, 'ن'),
-            meaning: 'آن‌ها (مؤنث) در حال انجام می‌دهند'
+            meaning: 'راهنما: آن‌ها (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\" یا \"خواهند\"'
         },
         {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, ''),
-            meaning: 'تو (مذکر) در حال انجام می‌دهی'
+            meaning: 'راهنما: تو (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'شما دو (مذکر) در حال انجام می‌دهید'
+            meaning: 'راهنما: شما دو (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ون'),
-            meaning: 'شما (مذکر) در حال انجام می‌دهید'
+            meaning: 'راهنما: شما (مذکر) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ين'),
-            meaning: 'تو (مؤنث) در حال انجام می‌دهی'
+            meaning: 'راهنما: تو (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ان'),
-            meaning: 'شما دو (مؤنث) در حال انجام می‌دهید'
+            meaning: 'راهنما: شما دو (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
             conjugation: addPresentDiacritics('تَ', faal, ayn, lam, 'ن'),
-            meaning: 'شما (مؤنث) در حال انجام می‌دهید'
+            meaning: 'راهنما: شما (مؤنث) در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'متکلم وحده',
             pronoun: 'أَنَا',
             conjugation: addPresentDiacritics('أَ', faal, ayn, lam, ''),
-            meaning: 'من در حال انجام می‌دهم'
+            meaning: 'راهنما: من در حال/آینده نزدیک؛ با \"می + فعل\"'
         },
         {
             form: 'متکلم مع الغیر',
             pronoun: 'نَحْنُ',
             conjugation: addPresentDiacritics('نَ', faal, ayn, lam, ''),
-            meaning: 'ما در حال انجام می‌دهیم'
+            meaning: 'راهنما: ما در حال/آینده نزدیک؛ با \"می + فعل\"'
         }
     ];
 }
@@ -363,37 +363,37 @@ function conjugateImperative(verb) {
             form: 'مفرد مذکر مخاطب',
             pronoun: 'أَنْتَ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, ''),
-            meaning: 'تو (مذکر) دستور انجام بده'
+            meaning: 'راهنما: خطاب به تو (مذکر)؛ فعل امری/دستوری'
         },
         {
             form: 'مثنی مذکر مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
-            meaning: 'شما دو (مذکر) دستور انجام بدهید'
+            meaning: 'راهنما: خطاب به شما دو (مذکر)؛ فعل امری/دستوری'
         },
         {
             form: 'جمع مذکر مخاطب',
             pronoun: 'أَنْتُمْ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'وا'),
-            meaning: 'شما (مذکر) دستور انجام بدهید'
+            meaning: 'راهنما: خطاب به شما (مذکر)؛ فعل امری/دستوری'
         },
         {
             form: 'مفرد مؤنث مخاطب',
             pronoun: 'أَنْتِ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ي'),
-            meaning: 'تو (مؤنث) دستور انجام بده'
+            meaning: 'راهنما: خطاب به تو (مؤنث)؛ فعل امری/دستوری'
         },
         {
             form: 'مثنی مؤنث مخاطب',
             pronoun: 'أَنْتُمَا',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ا'),
-            meaning: 'شما دو (مؤنث) دستور انجام بدهید'
+            meaning: 'راهنما: خطاب به شما دو (مؤنث)؛ فعل امری/دستوری'
         },
         {
             form: 'جمع مؤنث مخاطب',
             pronoun: 'أَنْتُنَّ',
             conjugation: addImperativeDiacritics(faal, ayn, lam, 'ن'),
-            meaning: 'شما (مؤنث) دستور انجام بدهید'
+            meaning: 'راهنما: خطاب به شما (مؤنث)؛ فعل امری/دستوری'
         }
     ];
 }
