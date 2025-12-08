@@ -459,7 +459,7 @@ function displayResult(verb, tenseName, conjugations, root) {
         rootInfo.classList.add('hidden');
     }
 
-    // ایجاد جدول با 4 ستون
+    // ایجاد جدول با 3 ستون (بدون ستون معنی/ترجمه)
     let tableHTML = `
         <table>
             <thead>
@@ -467,7 +467,6 @@ function displayResult(verb, tenseName, conjugations, root) {
                     <th>صیغه</th>
                     <th>ضمیر</th>
                     <th>فعل</th>
-                    <th>معنی</th>
                 </tr>
             </thead>
             <tbody>
@@ -479,7 +478,6 @@ function displayResult(verb, tenseName, conjugations, root) {
                 <td class="form-label">${item.form}</td>
                 <td class="pronoun-label">${item.pronoun}</td>
                 <td class="arabic-text">${item.conjugation}</td>
-                <td class="meaning-text">${item.meaning}</td>
             </tr>
         `;
     });
